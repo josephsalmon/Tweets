@@ -235,5 +235,6 @@ for image_nb, t in enumerate(t_vals):
         plt.close('all')
 
 
-job = 'convert -layers optimize -resize 1000 -delay 6 {} -loop 3 gifs/Bezier.gif'.format(files)
+job = 'convert -limit memory 1GB -limit map 4GB -define registry:temporary-path=/tmp -layers optimize -resize 1000 -delay 6 {} -loop 3 gifs/Bezier.gif'.format(files)
+convert  ...
 os.system(job)

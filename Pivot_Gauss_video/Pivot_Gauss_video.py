@@ -54,7 +54,8 @@ def gaussian_elimination_with_pivot(m):
         # ACTIVATE IF you want pivot.
         # pivot(m, m_evol, i)
         liste_mat.append(m.copy())
-        # liste_evol.append(m_evol.copy())
+        liste_evol.append(np.eye(n))
+        liste_mat_elem.append(np.eye(n))
         for j in range(i + 1, n):
             alpha = m[j, i] / m[i, i]
             m[j, :] = m[j, :] - m[i, :] * alpha
@@ -64,8 +65,7 @@ def gaussian_elimination_with_pivot(m):
             liste_mat.append(m.copy())
             liste_evol.append(m_evol.copy())
             liste_mat_elem.append(m_elem.copy())
-        liste_evol.append(m_evol.copy())
-        liste_mat_elem.append(m_elem.copy())
+
     # if np.abs(m[n - 1, n - 1]) < np.finfo(np.float64).eps:
     #     raise ValueError('No unique solution')
 
@@ -79,6 +79,16 @@ def gaussian_elimination_with_pivot(m):
             liste_evol.append(m_evol.copy())
             liste_mat.append(m.copy())
             liste_mat_elem.append(m_elem.copy())
+    for i in range(n):
+        alpha = m[i, i]
+        m[i, i] = 1
+        liste_mat.append(m.copy())
+        m_elem = np.eye(n)
+        m_elem[i, i] = 1 / alpha
+        liste_mat_elem.append(m_elem.copy())
+        m_evol[i, :] = m_evol[i, :] / alpha
+        liste_evol.append(m_evol.copy())
+
     # # backward substitution
     # x = np.zeros(n, )
     # for i in range(n - 1, -1, -1):
@@ -138,7 +148,13 @@ def imaging(m):
 n = 19
 # m = np.abs(np.random.randn(n, n) + np.eye(n))
 m = (np.random.randn(n, n) + np.eye(n))
-
-print(m)
+# m_init = m.copy()
+# print(m)
 # print(gaussian_elimination_with_pivot(m))
+
+fig1 = plt.figure()
+ax11 = fig1.add_subplot(1, 1, 1)
+ax11.imshow(np.linalg.inv(m), vmin=-3, vmax=3, cmap='RdBu')
+
 imaging(m)
+
