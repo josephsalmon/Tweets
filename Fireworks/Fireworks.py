@@ -11,10 +11,9 @@ np.random.seed(44)
 plt.style.use('dark_background')
 save = True
 n_trajectories = 80
-list_colors = ['blue', 'orange', '#f95e04', 'purple', 'red']
+list_colors = ['#72bcd4', 'yellow', '#f95e04', 'orange', 'red']
 n_colors = len(list_colors)
 
-n_sources = 7
 
 centers = [np.array([0, 0]),
            np.array([45, 50]),
@@ -22,9 +21,11 @@ centers = [np.array([0, 0]),
            np.array([20, -28]),
            np.array([-30, 21]),
            np.array([-20, -20]),
-           np.array([30, 0]),
-           np.array([0, 40])]
+           np.array([50, -30]),
+           # np.array([0, 40])
+           ]
 
+n_sources = len(centers)
 
 n_times = 1000
 n_times_tab = (np.linspace(n_times, 1.5 * n_times, num=n_sources + 1)).astype(int)
@@ -48,7 +49,7 @@ width = np.sqrt(n_sources) * np.sqrt(n_times)
 
 
 f, ax = plt.subplots(1, 1)
-f.set_size_inches(16, 16)
+f.set_size_inches(30, 30)
 
 
 ax.set_aspect('equal')
@@ -97,22 +98,58 @@ for i in range(n_trajectories):
             print('----')
             print(idx_video)
 
-# # job = 'convert -layers optimize -resize 400 -delay 6 {} -loop 3 gifs/TCL.gif'.format(files)
+# # # job = 'convert -layers optimize -resize 400 -delay 6 {} -loop 3 gifs/TCL.gif'.format(files)
 # job = 'convert -layers optimize -resize 800 -delay 2 {} -loop 3 gifs/Fireworks.gif'.format(files)
 # os.system(job)
 
+# subprocess.run('''
+# cd  gifs
+
+# ffmpeg \
+#   -framerate 60 \
+#   -pattern_type glob \
+#   -i '*.png' \
+#   -vf scale=500:500:flags=lanczos \
+#   Fireworks.gif \
+# ;
+
+# cd ..
+# ''', shell=True, check=True, executable='/bin/bash')
+
+
 subprocess.run('''
 cd  gifs
+files=(*.png )
 
-ffmpeg \
-  -framerate 30 \
-  -pattern_type glob \
-  -i '*.png' \
-  -r 15 \
-  -vf scale=512:-1 \
-  Fireworks.gif \
-;
+batch=75
 
+## Read the array in batches of $batch
+for (( i=0; $i<${#files[@]}; i+=$batch ))
+do
+    ## Convert this batch
+    convert -limit memory 1GB -limit map 4GB -define registry:temporary-path=/tmp -layers optimize -resize 800 -delay 1 {} -loop 1 "${files[@]:$i:$batch}" animated.$i.gif
+done
 cd ..
 ''', shell=True, check=True, executable='/bin/bash')
 
+
+path = "./gifs/"
+for filename in os.listdir(path):
+    # print(os.path.splitext(filename[1][:5])
+    if os.path.splitext(filename)[1] == '.gif':
+        print('True')
+        print(filename)
+        int(os.path.splitext(filename)[0][9:])
+        # os.rename(path + '/' + filename, path + '/' + str(filename[0]).zfill(5) + '.gif')
+
+        os.rename(path + '/' + filename, path + '/' + 'animated' + str(int(os.path.splitext(filename)[0][9:])).zfill(5) + '.gif')
+
+
+subprocess.run('''
+cd gifs
+## Now, merge them into a single file
+convert -loop 3 animated*.gif all.gif
+cd ..
+''', shell=True, check=True, executable='/bin/bash')
+
+# os.system(cmd)
