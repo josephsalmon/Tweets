@@ -3,6 +3,8 @@ Annie Perkins Math Art Challenge.
 https://twitter.com/anniek_p/status/1244220881347502080
 Adapted from https://github.com/hackingmath/pygame_sketches/blob/master/binary_grid_challenge.py
 by J. Salmon
+Inkscape advice:
+https://graphicdesign.stackexchange.com/questions/15450/remove-background-based-on-color-in-inkscape
 April 05, 2020
 """
 
@@ -21,6 +23,7 @@ n_digit = 128
 nature = 'exp'  # 'sqrt2'
 # nature = 'sqrt2'
 # nature = 'pi'
+
 mp.dps = n_digit  # set number of digits
 inflate = 5
 
@@ -94,5 +97,6 @@ def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
 
 fig, hitomezashi_mat = plt_hitomezashi(n_digit=n_digit, nature=nature)
 
-
-fig.savefig('pdf/hitomezashi_{}_{}.pdf'.format(nature, n_digit), format="pdf", bbox_inches='tight')
+print(nature)
+fig.savefig('pdf/hitomezashi_{}_{}.pdf'.format(nature, n_digit),
+            format="pdf", bbox_inches='tight', transparent=True)
