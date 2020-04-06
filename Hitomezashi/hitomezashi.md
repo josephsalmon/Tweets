@@ -28,7 +28,7 @@ The little dash as drawn as follows:
 - If the i-th digit is a 1, start the i-th row by a dash, then a blank, then a dash, then etc. 
 - If the i-th digit is a 0, start the i-th row by a blank, then a blank, then a dash, then etc. 
 
-The provided code proposes as "seeds" sequences frome either: a random sequence (default) or the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}">:
+The provided code proposes as "seeds" sequences from either: a random sequence (default) or the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}">:
 
 - `random` : 
 [hitomezashi_random_50.png](png/hitomezashi_random_50.png), [hitomezashi_random_50.pdf](pdf/hitomezashi_random_50.pdf)
@@ -47,3 +47,26 @@ The provided code proposes as "seeds" sequences frome either: a random sequence 
 -`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
 
 <img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
+
+
+If you prefer colorized version you can play with the colormaps to change the rendering:
+
+
+
+- `random` : 
+[hitomezashi_color_random_150.png](png/hitomezashi_color_random_150.png), 
+
+<img src="png/hitomezashi_color_random_150.png" width="400" height="400">
+
+- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">: 
+[hitomezashi_color_exp_150.png](png/hitomezashi_color_exp_150.png),
+
+<img src="png/hitomezashi_color_exp_150.png" width="400" height="400">
+
+- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">:[hitomezashi_color_pi_150.png](png/hitomezashi_color_pi_150.png), 
+
+<img src="png/hitomezashi_color_pi_150.png" width="400" height="400">
+
+-`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_color_sqrt2_150.png](png/hitomezashi_color_sqrt2_150.png),
+
+<img src="png/hitomezashi_color_sqrt2_150.png" width="400" height="400">
