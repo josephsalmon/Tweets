@@ -11,13 +11,14 @@ see https://en.wikipedia.org/wiki/Sashiko and also
 https://www.romordesigns.com/journal/2018/10/18/sashiko-the-art-of-japanese-embroidery for some sewing examples.
 
 I became aware of this thanks to Annie Perkins Math Art Challenge:
-https://twitter.com/anniek_p/status/1244220881347502080
+https://twitter.com/anniek_p/status/1244220881347502080.
 A nice video on the topic is provided by her at:
-https://twitter.com/anniek_p/status/1244220881347502080
+https://twitter.com/anniek_p/status/1244220881347502080.
 
 
-The way it works is simple. One has to simply provide a sequence of 1's and 0's (say of size `n_iter`).
-Then, one plays with an (n_iter x n_iter) array, and draw little dash as follows:
+The way the Python code [hitomezashi.py](hitomezashi.py)is as follows: the size of the image is governed by `n_iter`, and the output will draw a `n_iter x n_iter` figure.
+The sequence of 1's and 0's (of size `n_iter`) used for the generation (the "seed"), has several options (see below).
+The little dash as drawn as follows:
 
 ## Column filling:
 - If the i-th digit is a 1, start the i-th column by a dash, then a blank, then a dash, then etc. 
@@ -27,8 +28,7 @@ Then, one plays with an (n_iter x n_iter) array, and draw little dash as follows
 - If the i-th digit is a 1, start the i-th row by a dash, then a blank, then a dash, then etc. 
 - If the i-th digit is a 0, start the i-th row by a blank, then a blank, then a dash, then etc. 
 
-
-The provided code proposed as examples to takes the "seed" sequence a random sequence (default) or the parity of the fractional part of some real number, examples including:
+The provided code proposes as "seeds" sequences frome either: a random sequence (default) or the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}">:
 
 - `random` : 
 [hitomezashi_random_50.png](png/hitomezashi_random_50.png), [hitomezashi_random_50.pdf](pdf/hitomezashi_random_50.pdf)
