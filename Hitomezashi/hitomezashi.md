@@ -41,7 +41,7 @@ The provided code proposed as examples to takes the "seed" sequence a random seq
 
 <img src="png/hitomezashi_exp_50.png" width="400" height="400">
 
-- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
+- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
 <img src="png/hitomezashi_pi_50.png" width="400" height="400">
 
 -`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
