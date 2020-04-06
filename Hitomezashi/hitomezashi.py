@@ -7,30 +7,36 @@ Inkscape advice:
 https://graphicdesign.stackexchange.com/questions/15450/remove-background-based-on-color-in-inkscape
 April 05, 2020
 """
-
+import os
 import matplotlib.pylab as plt
 import numpy as np
-from mpmath import exp, nstr, sqrt, mp, pi
+from mpmath import exp, nstr, sqrt, mp, pi, rand
 
-# from tempfile import mkdtemp
-from joblib import Memory
 
-# cache memory with joblib
-# cachedir = mkdtemp()
-memory = Memory(verbose=1)
+# Size : number of columns/vector in the picture
+n_digit = 50
+mp.dps = n_digit  # set number of digits
 
-n_digit = 128
-nature = 'exp'  # 'sqrt2'
+# export format: pdf, png, svg (bad interpolation though!)
+img_format = "png"
+print("Export format is {}".format(img_format))
+
+# nature: the "seed" of the picture, default is random
+# nature = 'exp'  # 'sqrt2'
 # nature = 'sqrt2'
 # nature = 'pi'
+nature = 'random'
 
-mp.dps = n_digit  # set number of digits
+# Size of the inflate ratio:
+# inflate = 5, means they are 5 spaces between dashes.
 inflate = 5
 
+# Saving activated:
+saving = True
 
-@memory.cache
+
 def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
-
+    """Main function to plot the hitomezashi."""
     plt.close('all')
 
     print('Type : {}'.format(nature))
@@ -42,7 +48,8 @@ def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
         offset_row_str = (nstr(sqrt(2, dps=n_digit) / 10, n=n_digit + 2))
     elif nature is "pi":
         offset_row_str = nstr(pi(dps=n_digit) / 10, n=n_digit + 2)
-
+    elif nature is "random":
+        offset_row_str = nstr(rand(), n=n_digit + 2)
     print(offset_row_str)
     bin_matrix = np.zeros([n_digit, n_digit])
 
@@ -79,18 +86,13 @@ def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     dim_row = hitomezashi_mat.shape[0]
     dim_col = hitomezashi_mat.shape[1]
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
-    plt.subplots_adjust(top=0.9)  # border issues somtimes without
-    # ax.set_xlim(dim_col + 1, -1)
-    # ax.set_ylim(dim_row + 1, -1)
-    # ax.autoscale(False)
-    hitomezashi_mat_big = np.zeros([dim_row + 5, dim_col + 5])
+    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+    hitomezashi_mat_big = np.zeros([dim_row + 10, dim_col + 10])
     hitomezashi_mat_big[5:dim_row + 5, 5:dim_col + 5] = hitomezashi_mat
-    ax.imshow(hitomezashi_mat_big, cmap='Greys', interpolation='none',
-              origin='upper'
-              # , extent=(-5, dim_col + 10, -5, dim_row + 10)
-              )
-    ax.axis('off')
+    ax.imshow(hitomezashi_mat_big, cmap='Greys', interpolation='none', aspect='equal')
+    ax.set_axis_off()
+    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+    # plt.tight_layout()
     plt.show()
     return fig, hitomezashi_mat_big
 
@@ -98,5 +100,11 @@ def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
 fig, hitomezashi_mat = plt_hitomezashi(n_digit=n_digit, nature=nature)
 
 print(nature)
-fig.savefig('pdf/hitomezashi_{}_{}.pdf'.format(nature, n_digit),
-            format="pdf", bbox_inches='tight', transparent=True)
+
+if saving:
+    img_directory = os.path.join(os.getcwd(), img_format)
+    if not os.path.isdir(img_directory):
+        os.mkdir(img_directory)
+    filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit, img_format)
+    fig.savefig(os.path.join(os.getcwd(), img_format, filename), pad_inches=0,
+                format=img_format, bbox_inches=None, transparent=True)
