@@ -30,20 +30,20 @@ Then, one plays with an (n_iter x n_iter) array, and draw little dash as follows
 
 The provided code proposed as examples to takes the "seed" sequence a random sequence (default) or the parity of the fractional part of some real number, examples including:
 
-    - `random` : 
-[hitomezashi_random_50.png](png/hitomezashi_random_128.png)
+- `random` : 
+[hitomezashi_random_50.png](png/hitomezashi_random_50.png)
 
 <img src="png/hitomezashi_random_50.png" width="400" height="400">
 
-    - `exp` corresponds to $$e = \exp(1)$$: [hitomezashi_exp_50.png](png/hitomezashi_exp_50.png)
+- `exp` corresponds to $$e = \exp(1)$$: 
+[hitomezashi_exp_50.png](png/hitomezashi_exp_50.png)
 
 <img src="png/hitomezashi_exp_50.png" width="400" height="400">
 
-    - $$\pi$$: [hitomezashi_pi_50.png](png/hitomezashi_pi_128.png)
+- $$\pi$$: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
+
+<img src="png/hitomezashi_pi_50.png" width="400" height="400">
+
+- $$\sqrt(2)$$: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
 
 <img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
-
-    - $$\sqrt(2)$$: [hitomezashi_sqrt2_50.png](png/hitomezashi_pi_128.png)
-
-<img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
-

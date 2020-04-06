@@ -22,10 +22,10 @@ img_format = "png"
 print("Export format is {}".format(img_format))
 
 # nature: the "seed" of the picture, default is random
-# nature = 'exp'  # 'sqrt2'
+nature = 'exp'  # 'sqrt2'
 # nature = 'sqrt2'
 # nature = 'pi'
-nature = 'random'
+# nature = 'random'
 
 # Size of the inflate ratio:
 # inflate = 5, means they are 5 spaces between dashes.
