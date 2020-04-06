@@ -1,7 +1,5 @@
 # Hitomezashi
 
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
 Here I provide some code for te numerical creation of Hitomezashi art.
 
 What is Hitomezashi? Here is an example:
@@ -37,15 +35,15 @@ The provided code proposed as examples to takes the "seed" sequence a random seq
 
 <img src="png/hitomezashi_random_50.png" width="400" height="400">
 
-- `exp` corresponds to $$e = \exp(1)$$: 
+- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e = \exp(1)">: 
 [hitomezashi_exp_50.png](png/hitomezashi_exp_50.png)
 
 <img src="png/hitomezashi_exp_50.png" width="400" height="400">
 
-- `pi` corresponds to $$\pi$$: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
+- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
 
 <img src="png/hitomezashi_pi_50.png" width="400" height="400">
 
--`sqrt2` corresponds to $$\sqrt(2)$$: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
+-`sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png)
 
 <img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
