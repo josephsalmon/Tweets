@@ -18,14 +18,14 @@ n_digit = 50
 mp.dps = n_digit  # set number of digits
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "png"
+img_format = "pdf"
 print("Export format is {}".format(img_format))
 
 # nature: the "seed" of the picture, default is random
-nature = 'exp'  # 'sqrt2'
-# nature = 'sqrt2'
-# nature = 'pi'
-# nature = 'random'
+# nature = 'exp'  # 'sqrt2'
+nature = 'sqrt2'
+nature = 'pi'
+nature = 'random'
 
 # Size of the inflate ratio:
 # inflate = 5, means they are 5 spaces between dashes.
