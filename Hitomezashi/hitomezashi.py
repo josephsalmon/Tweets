@@ -26,6 +26,7 @@ if color_style is 'nb':
 else:    # cmap = matplotlib.cm.twilight_shifted
     cmap = plt.get_cmap(color_style)
 
+color_quantification = 10
 
 # Size : number of columns/vector in the picture
 n_digit = 100
@@ -119,25 +120,29 @@ else:
     black_mask = hitomezashi_mat > 0.5
     hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
                                            background=1)
-    hitomezashi_labels = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
+    hitomezashi_labels_init = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
         + (np.triu(hitomezashi_labels_raw)).copy()
 
-    unique_elem, counts_elem = np.unique(hitomezashi_labels, return_counts=True)
-    hitomezashi_labels[black_mask] = -1
-
+    unique_elem, counts_elem = np.unique(hitomezashi_labels_init, return_counts=True)
     # simples squares in white?
     small_squares_labels = unique_elem[counts_elem == (inflate - 1)**2]
     small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
+
+    hitomezashi_labels = np.zeros(hitomezashi_labels_init.shape)
+    if color_quantification > 1:
+        hitomezashi_labels = (hitomezashi_labels_init % color_quantification) + 1
+    hitomezashi_labels[black_mask] = -1
     for val in small_squares_labels:
-        hitomezashi_labels[hitomezashi_labels == val] = -2
+        hitomezashi_labels[hitomezashi_labels_init == val] = -2
     for val in small_squares_labels_dble:
-        hitomezashi_labels[hitomezashi_labels == val] = -2
+        hitomezashi_labels[hitomezashi_labels_init == val] = -2
+
     cmap.set_under(color='w')
     cmap.set_bad(color='k')
     masked_array = np.ma.masked_where(hitomezashi_labels == -1,
                                       hitomezashi_labels)
-
-    normalize = matplotlib.colors.Normalize(vmin=1, vmax=np.max(unique_elem))
+    normalize = matplotlib.colors.Normalize(vmin=1,
+                                            vmax=np.max(hitomezashi_labels[:]))
 
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
     plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
@@ -156,7 +161,8 @@ def saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
         if not os.path.isdir(img_directory):
             os.mkdir(img_directory)
         if color_style is None:
-            filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit, img_format)
+            filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit,
+                                                     img_format)
         else:
 
             filename = 'hitomezashi_color_{}_{}_{}.{}'.format(color_style,
