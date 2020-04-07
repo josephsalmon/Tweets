@@ -7,6 +7,7 @@ Inkscape advice:
 https://graphicdesign.stackexchange.com/questions/15450/remove-background-based-on-color-in-inkscape
 April 05, 2020
 """
+
 import os
 import matplotlib
 import matplotlib.pylab as plt
@@ -14,34 +15,47 @@ import numpy as np
 from mpmath import exp, nstr, sqrt, mp, pi, rand
 from skimage import measure
 
+# Color Style
+color_style = 'nb'
+color_style = 'coolwarm'
+# color_style = 'viridis'
+# color_style ='RdBu'
+# color_style ='Blues'
+if color_style is 'nb':
+    cmap = plt.get_cmap('Greys')
+else:    # cmap = matplotlib.cm.twilight_shifted
+    cmap = plt.get_cmap(color_style)
+
+
 # Size : number of columns/vector in the picture
-n_digit = 150
+n_digit = 100
 mp.dps = n_digit + 3  # set number of digits
+
 
 # export format: pdf, png, svg (bad interpolation though!)
 img_format = "png"
 print("Export format is {}".format(img_format))
 
-# nature: the "seed" of the picture, default is random
-nature = 'exp'  # 'sqrt2'
-# nature = 'sqrt2'
+
+# Seed" of the picture, default is random
+nature = 'sqrt2'
+# nature = 'exp'  # 'sqrt2'
 # nature = 'pi'
 # nature = 'random'
 
 # Size of the inflate ratio:
-# inflate = 5, means they are 5 spaces between dashes.
 inflate = 5
+# inflate = 5, means they are 5 spaces between dashes.
 
 # Saving activated:
-saving = True
+saving = False
+
+plt.close('all')
 
 
-def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
-    """Main function to plot the hitomezashi."""
-    plt.close('all')
-
+def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
+    """Main function to create a hitomezashi matrix."""
     print('Type : {}'.format(nature))
-
     # Note: the " / 10 " below (and the i+2) is to avoid "." issues
     if nature is "exp":
         offset_row_str_int = (nstr(exp(1) / 10, n=n_digit + 3))
@@ -84,65 +98,77 @@ def plt_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     hitomezashi_mat[n_digit * inflate - 1, :] = 1
     hitomezashi_mat[:, n_digit * inflate - 1] = 1
 
+    return hitomezashi_mat
+
+
+hitomezashi_mat = make_hitomezashi(n_digit=n_digit, nature=nature)
+
+
+if color_style is 'nb':
+    # Black an white part
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-    ax.imshow(hitomezashi_mat, cmap='Greys', interpolation='none',
+    ax.imshow(hitomezashi_mat, cmap=cmap, interpolation='none',
               aspect='equal')
     ax.set_axis_off()
     plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
     plt.show()
-    return fig, hitomezashi_mat
 
 
-fig, hitomezashi_mat = plt_hitomezashi(n_digit=n_digit, nature=nature)
+else:
+    # Color part
+    black_mask = hitomezashi_mat > 0.5
+    hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
+                                           background=1)
+    hitomezashi_labels = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
+        + (np.triu(hitomezashi_labels_raw)).copy()
+
+    unique_elem, counts_elem = np.unique(hitomezashi_labels, return_counts=True)
+    hitomezashi_labels[black_mask] = -1
+
+    # simples squares in white?
+    small_squares_labels = unique_elem[counts_elem == (inflate - 1)**2]
+    small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
+    for val in small_squares_labels:
+        hitomezashi_labels[hitomezashi_labels == val] = -2
+    for val in small_squares_labels_dble:
+        hitomezashi_labels[hitomezashi_labels == val] = -2
+    cmap.set_under(color='w')
+    cmap.set_bad(color='k')
+    masked_array = np.ma.masked_where(hitomezashi_labels == -1,
+                                      hitomezashi_labels)
+
+    normalize = matplotlib.colors.Normalize(vmin=1, vmax=np.max(unique_elem))
+
+    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+    plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
+               interpolation='none', aspect='equal')
+    ax.set_axis_off()
+    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+    plt.show()
 
 
-# Color part
+def saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
+                       img_format=img_format, saving=saving,
+                       color_style=color_style):
+    """Saving part."""
+    if saving:
+        img_directory = os.path.join(os.getcwd(), img_format)
+        if not os.path.isdir(img_directory):
+            os.mkdir(img_directory)
+        if color_style is None:
+            filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit, img_format)
+        else:
 
-black_mask = hitomezashi_mat > 0.5
-hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
-                                       background=1)
-hitomezashi_labels = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
-    + (np.triu(hitomezashi_labels_raw)).copy()
+            filename = 'hitomezashi_color_{}_{}_{}.{}'.format(color_style,
+                                                              nature,
+                                                              n_digit,
+                                                              img_format)
 
-unique_elem, counts_elem = np.unique(hitomezashi_labels, return_counts=True)
-hitomezashi_labels[black_mask] = -1
+        fig.savefig(os.path.join(os.getcwd(), img_format, filename),
+                    pad_inches=0, format=img_format,
+                    bbox_inches=None, transparent=True)
 
-# simples squares in white?
-small_squares_labels = unique_elem[counts_elem == (inflate-1)**2]
-small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate-1)**2]
-for val in small_squares_labels:
-    hitomezashi_labels[hitomezashi_labels == val] = -2
-for val in small_squares_labels_dble:
-    hitomezashi_labels[hitomezashi_labels == val] = -2
 
-masked_array = np.ma.masked_where(hitomezashi_labels == -1, hitomezashi_labels)
-
-cmap = matplotlib.cm.twilight_shifted
-# cmap = matplotlib.cm.RdBu
-# cmap = matplotlib.cm.viridis
-# cmap = matplotlib.cm.Blues
-
-cmap.set_under(color='w')
-cmap.set_bad(color='k')
-
-normalize = matplotlib.colors.Normalize(vmin=1, vmax=np.max(unique_elem))
-
-fig_color, ax_color = plt.subplots(1, 1, figsize=(5, 5))
-plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
-           interpolation='none', aspect='equal')
-ax_color.set_axis_off()
-plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
-plt.show()
-
-# Saving part
-if saving:
-    img_directory = os.path.join(os.getcwd(), img_format)
-    if not os.path.isdir(img_directory):
-        os.mkdir(img_directory)
-    filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit, img_format)
-    fig.savefig(os.path.join(os.getcwd(), img_format, filename), pad_inches=0,
-                format=img_format, bbox_inches=None, transparent=True)
-    filename = 'hitomezashi_color_{}_{}.{}'.format(nature, n_digit, img_format)
-    fig_color.savefig(os.path.join(os.getcwd(), img_format, filename),
-                      pad_inches=0, format=img_format, bbox_inches=None,
-                      transparent=True)
+saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
+                   img_format=img_format, saving=saving,
+                   color_style=color_style)
