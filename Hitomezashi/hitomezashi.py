@@ -16,11 +16,11 @@ from skimage import measure
 
 # Color Style:
 # color_style = 'nb'
+color_style = 'twilight_shifted'
+color_style = 'RdBu'
 color_style = 'viridis'
 color_style = 'twilight'
-color_style = 'twilight_shifted'
-# color_style = 'RdBu'
-color_style ='Blues'
+# color_style = 'Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
 # color_style = 'gist_earth'
@@ -33,7 +33,7 @@ else:
     cmap = plt.get_cmap(color_style)
 
 # Saving activated:
-saving = False
+saving = True
 
 # Quantifzation level for colored images
 n_quant = 30
@@ -46,7 +46,7 @@ mp.dps = n_digit + 3  # set number of digits
 
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "png"
+img_format = "svg"
 print("Export format is {}".format(img_format))
 
 
@@ -54,9 +54,9 @@ print("Export format is {}".format(img_format))
 nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
 # nature = 'pi'
-nature = 'random'
+# nature = 'random'
 # XXX random seed not funcitonal right now...
-seed = 12345
+seed = 123456
 r = np.random.RandomState(seed)
 # rng = np.random.default_rng(seed) # for future version of numpy,
 # see https://albertcthomas.github.io/good-practices-random-number-generators/
@@ -87,25 +87,18 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
                                              size=n_digit + 3),
                                              max_line_width=n_digit + 10,
                                              separator='')
-        print(offset_row_str_int)
-        offset_row_str_int = offset_row_str_int[1:-1]
-    if mirror:
-        offset_row_str_int
-        n_pix = 2 * n_digit
-        offset_row_str = offset_row_str_int[2:] + offset_row_str_int[:1:-1]
-    else:
-        n_pix = n_digit
-        offset_row_str = offset_row_str_int[2:]
+    offset_row_str_int = offset_row_str_int[1:-1]
+    offset_row_str = offset_row_str_int[2:]
 
     print("Seed={}".format(offset_row_str))
-    bin_matrix = np.zeros([n_pix, n_pix])
+    bin_matrix = np.zeros([n_digit, n_digit])
 
-    odd_row_pattern = np.zeros(n_pix,)
+    odd_row_pattern = np.zeros(n_digit,)
     odd_row_pattern[::2] = 1
-    even_row_pattern = np.zeros(n_pix,)
+    even_row_pattern = np.zeros(n_digit,)
     even_row_pattern[1::2] = 1
 
-    for i in range(n_pix):
+    for i in range(n_digit):
         if int(offset_row_str[i]) % 2 is 1:
             bin_matrix[i, :] = odd_row_pattern
         else:
@@ -114,7 +107,7 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     inflate_row = np.zeros([inflate, inflate])
     inflate_row[0, :] = 1
 
-    bin_matrix_kr = np.ones([inflate * n_pix + 1, inflate * n_pix + 1])
+    bin_matrix_kr = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
     bin_matrix_kr[:-1, : -1] = np.kron(bin_matrix, inflate_row)  # border issue
     bin_matrix_kr = np.clip(bin_matrix_kr + bin_matrix_kr.T, 0, 1)
 
@@ -122,26 +115,26 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     bin_matrix_patch = 1 - bin_matrix  # missing dots top left
     inflate_row_patch = np.zeros([inflate, inflate])
     inflate_row_patch[0, 0] = 1
-    bin_matrix_kr_patch = np.ones([inflate * n_pix + 1, inflate * n_pix + 1])
+    bin_matrix_kr_patch = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
     bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch, inflate_row_patch)
     bin_matrix_kr_patch = np.clip(bin_matrix_kr_patch + bin_matrix_kr_patch.T,
                                   0, 1)
-    hitomezashi_mat = np.clip(bin_matrix_kr + bin_matrix_kr_patch, 0, 1)
-    hitomezashi_mat[0, :] = 1
-    hitomezashi_mat[:, 0] = 1
-    hitomezashi_mat[n_pix * inflate, :] = 1
-    hitomezashi_mat[:, n_pix * inflate] = 1
+    hito_mat = np.clip(bin_matrix_kr + bin_matrix_kr_patch, 0, 1)
+    hito_mat[0, :] = 1
+    hito_mat[:, 0] = 1
+    hito_mat[n_digit * inflate, :] = 1
+    hito_mat[:, n_digit * inflate] = 1
 
-    return hitomezashi_mat
+    return hito_mat
 
 
-hitomezashi_mat = make_hitomezashi(n_digit=n_digit, nature=nature)
+hito_mat = make_hitomezashi(n_digit=n_digit, nature=nature)
 
 
 # Black an white part
 if color_style is 'nb':
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-    ax.imshow(hitomezashi_mat, cmap=cmap, interpolation='none',
+    ax.imshow(hito_mat, cmap=cmap, interpolation='none',
               aspect='equal')
     ax.set_axis_off()
     plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
@@ -150,43 +143,51 @@ if color_style is 'nb':
 
 # Color part
 else:
-
     # symmetry along the diagonal
-    hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
-                                           background=1)
-    hitomezashi_labels_init = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
-        + (np.triu(hitomezashi_labels_raw)).copy()
+    hito_lbls_raw = measure.label(hito_mat, neighbors=4,
+                                  background=1)
+    hito_lbls_init = np.triu(hito_lbls_raw, k=1).T.copy() \
+        + (np.triu(hito_lbls_raw)).copy()
     # get connected components labels and frequency
-    unique_elem, counts_elem = np.unique(hitomezashi_labels_init,
+    unique_elem, counts_elem = np.unique(hito_lbls_init,
                                          return_counts=True)
 
     # Identify (smalle) unit squares to plot them white
     small_squares_labels = unique_elem[counts_elem <= (inflate - 1)**2]
     small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
 
-    # Handle bla
-    hitomezashi_labels = np.zeros(hitomezashi_labels_init.shape)
+    # Handle quantization
+    hito_lbls = np.zeros(hito_lbls_init.shape)
     if n_quant > 1:
-        hitomezashi_labels = (hitomezashi_labels_init % n_quant) + 1
+        hito_lbls = (hito_lbls_init % n_quant) + 1
     else:
-        hitomezashi_labels = hitomezashi_labels_init
+        hito_lbls = hito_lbls_init
 
     # Black pixels
-    black_mask = hitomezashi_mat > 0.5
-    hitomezashi_labels[black_mask] = -1
+    black_mask = hito_mat > 0.5
+    hito_lbls[black_mask] = -1
     cmap.set_bad(color='k')
 
     # White pixels
     for val in small_squares_labels:
-        hitomezashi_labels[hitomezashi_labels_init == val] = -2
+        hito_lbls[hito_lbls_init == val] = -2
     for val in small_squares_labels_dble:
-        hitomezashi_labels[hitomezashi_labels_init == val] = -2
+        hito_lbls[hito_lbls_init == val] = -2
     cmap.set_under(color='w')
 
-    masked_array = np.ma.masked_where(hitomezashi_labels == -1,
-                                      hitomezashi_labels)
+    if mirror:
+        new_labels = np.concatenate((np.concatenate((hito_lbls[:-1, :-1],
+                                     hito_lbls[:-1, -2::-1]), axis=1),
+                                     np.concatenate((hito_lbls[-2::-1, :-1],
+                                                     hito_lbls[-2::-1, -2::-1]),
+                                     axis=1)), axis=0)
+        masked_array = np.ma.masked_where(new_labels == -1,
+                                          new_labels)
+    else:
+        masked_array = np.ma.masked_where(hito_lbls == -1,
+                                          hito_lbls)
     normalize = matplotlib.colors.Normalize(vmin=1,
-                                            vmax=np.max(hitomezashi_labels[:]))
+                                            vmax=np.max(hito_lbls[:]))
 
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
     plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
