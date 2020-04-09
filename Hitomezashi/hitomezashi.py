@@ -21,15 +21,20 @@ color_style = 'coolwarm'
 # color_style = 'viridis'
 # color_style ='RdBu'
 # color_style ='Blues'
+# color_style = 'PRGn'
+# color_style = 'Dark2'
+color_style = 'gist_earth'
+
+
 if color_style is 'nb':
     cmap = plt.get_cmap('Greys')
 else:    # cmap = matplotlib.cm.twilight_shifted
     cmap = plt.get_cmap(color_style)
 
-color_quantification = 10
+color_quantif = 30
 
 # Size : number of columns/vector in the picture
-n_digit = 100
+n_digit = 140
 mp.dps = n_digit + 3  # set number of digits
 
 
@@ -39,9 +44,9 @@ print("Export format is {}".format(img_format))
 
 
 # Seed" of the picture, default is random
-nature = 'sqrt2'
+# nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-# nature = 'pi'
+nature = 'pi'
 # nature = 'random'
 
 # Size of the inflate ratio:
@@ -49,7 +54,7 @@ inflate = 5
 # inflate = 5, means they are 5 spaces between dashes.
 
 # Saving activated:
-saving = False
+saving = True
 
 plt.close('all')
 
@@ -84,20 +89,23 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     inflate_row = np.zeros([inflate, inflate])
     inflate_row[0, :] = 1
 
-    bin_matrix_kr = np.kron(bin_matrix, inflate_row)
+    bin_matrix_kr = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
+    bin_matrix_kr[:-1, : -1] = np.kron(bin_matrix, inflate_row)  # border issue
     bin_matrix_kr = np.clip(bin_matrix_kr + bin_matrix_kr.T, 0, 1)
 
+    # Corner / padding issues
     bin_matrix_patch = 1 - bin_matrix  # missing dots top left
     inflate_row_patch = np.zeros([inflate, inflate])
     inflate_row_patch[0, 0] = 1
-    bin_matrix_kr_patch = np.kron(bin_matrix_patch, inflate_row_patch)
+    bin_matrix_kr_patch = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
+    bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch, inflate_row_patch)
     bin_matrix_kr_patch = np.clip(bin_matrix_kr_patch + bin_matrix_kr_patch.T,
                                   0, 1)
     hitomezashi_mat = np.clip(bin_matrix_kr + bin_matrix_kr_patch, 0, 1)
     hitomezashi_mat[0, :] = 1
     hitomezashi_mat[:, 0] = 1
-    hitomezashi_mat[n_digit * inflate - 1, :] = 1
-    hitomezashi_mat[:, n_digit * inflate - 1] = 1
+    hitomezashi_mat[n_digit * inflate, :] = 1
+    hitomezashi_mat[:, n_digit * inflate] = 1
 
     return hitomezashi_mat
 
@@ -105,8 +113,8 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
 hitomezashi_mat = make_hitomezashi(n_digit=n_digit, nature=nature)
 
 
+# Black an white part
 if color_style is 'nb':
-    # Black an white part
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
     ax.imshow(hitomezashi_mat, cmap=cmap, interpolation='none',
               aspect='equal')
@@ -115,30 +123,40 @@ if color_style is 'nb':
     plt.show()
 
 
+# Color part
 else:
-    # Color part
-    black_mask = hitomezashi_mat > 0.5
+
+    # symmetrization
     hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
                                            background=1)
     hitomezashi_labels_init = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
         + (np.triu(hitomezashi_labels_raw)).copy()
-
+    # get connected components label, and frequency
     unique_elem, counts_elem = np.unique(hitomezashi_labels_init, return_counts=True)
-    # simples squares in white?
-    small_squares_labels = unique_elem[counts_elem == (inflate - 1)**2]
+
+    # Identify (smalle) unit squares to plot them white
+    small_squares_labels = unique_elem[counts_elem <= (inflate - 1)**2]
     small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
 
+    # Handle bla
     hitomezashi_labels = np.zeros(hitomezashi_labels_init.shape)
-    if color_quantification > 1:
-        hitomezashi_labels = (hitomezashi_labels_init % color_quantification) + 1
+    if color_quantif > 1:
+        hitomezashi_labels = (hitomezashi_labels_init % color_quantif) + 1
+    else:
+        hitomezashi_labels = hitomezashi_labels_init
+
+    # Black pixels
+    black_mask = hitomezashi_mat > 0.5
     hitomezashi_labels[black_mask] = -1
+    cmap.set_bad(color='k')
+
+    # White pixels
     for val in small_squares_labels:
         hitomezashi_labels[hitomezashi_labels_init == val] = -2
     for val in small_squares_labels_dble:
         hitomezashi_labels[hitomezashi_labels_init == val] = -2
-
     cmap.set_under(color='w')
-    cmap.set_bad(color='k')
+
     masked_array = np.ma.masked_where(hitomezashi_labels == -1,
                                       hitomezashi_labels)
     normalize = matplotlib.colors.Normalize(vmin=1,
