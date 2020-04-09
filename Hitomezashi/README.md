@@ -72,7 +72,7 @@ with
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
 or without
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
-- `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
+- `sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
 [hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), with 
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
 or without mirroring
