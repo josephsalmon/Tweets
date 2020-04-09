@@ -18,8 +18,8 @@ from skimage import measure
 # color_style = 'nb'
 color_style = 'twilight_shifted'
 color_style = 'RdBu'
-color_style = 'viridis'
 color_style = 'twilight'
+color_style = 'viridis'
 # color_style = 'Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
@@ -46,14 +46,14 @@ mp.dps = n_digit + 3  # set number of digits
 
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "svg"
+img_format = "png"
 print("Export format is {}".format(img_format))
 
 
 # Seed" of the picture, default is random
-nature = 'sqrt2'
+# nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-# nature = 'pi'
+nature = 'pi'
 # nature = 'random'
 # XXX random seed not funcitonal right now...
 seed = 123456
