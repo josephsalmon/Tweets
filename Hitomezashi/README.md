@@ -16,7 +16,7 @@ A nice video on the topic is provided by her at:
 https://twitter.com/anniek_p/status/1244220881347502080.
 
 
-The way the Python code [hitomezashi.py](hitomezashi.py)is as follows: the size of the image is governed by `n_iter`, and the output will draw a `n_iter x n_iter` figure.
+The way the Python code  [hitomezashi.py](hitomezashi.py)is as follows: the size of the image is governed by `n_iter`, and the output will draw a `n_iter x n_iter` figure.
 The sequence of 1's and 0's (of size `n_iter`) used for the generation (the "seed"), has several options (see below).
 The little dash as drawn as follows:
 
@@ -32,20 +32,17 @@ The provided code proposes as "seeds" sequences from either: a random sequence (
 
 - `random` :
 [hitomezashi_random_50.png](png/hitomezashi_random_50.png), [hitomezashi_random_50.pdf](pdf/hitomezashi_random_50.pdf)
-
 <img src="png/hitomezashi_random_50.png" width="400" height="400">
 
 - `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_exp_50.png](png/hitomezashi_exp_50.png),
 [hitomezashi_exp_50.pdf](pdf/hitomezashi_exp_50.png)
-
 <img src="png/hitomezashi_exp_50.png" width="400" height="400">
 
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
 <img src="png/hitomezashi_pi_50.png" width="400" height="400">
 
--`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
-
+- `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
 <img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
 
 
@@ -54,18 +51,15 @@ If you prefer colorized version you can play with the colormaps to change the re
 
 - `random` :
 [hitomezashi_cmap_Blues_random_150_nq30.png](png/hitomezashi_cmap_Blues_random_150_nq30.png), [hitomezashi_cmap_Blues_random_150_nq30.pdf](pdf/hitomezashi_cmap_Blues_random_150_nq30.pdf)
-
-<img src="svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
+<img src="svg/hitomezashi_cmap_Blues_random_150_nq30.svg" width="400" height="400">
 
 - `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_cmap_RdBu_exp_150_nq30.png](png/hitomezashi_cmap_RdBu_exp_150_nq30.png),
 [hitomezashi_cmap_RdBu_exp_150_nq30.pdf](pdf/hitomezashi_cmap_RdBu_exp_150_nq30.png)
-
-<img src="svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
+<img src="svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg" width="400" height="400">
 
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf)
-<img src="svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
+<img src="svg/hitomezashi_cmap_viridis_pi_150_nq30.svg" width="400" height="400">
 
--`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf)
-
-<img src="svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
+- `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf)
+<img src="svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg" width="400" height="400">
