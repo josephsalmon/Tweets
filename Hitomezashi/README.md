@@ -52,7 +52,6 @@ The provided code proposes as "seeds" sequences from either: a random sequence (
 If you prefer colorized version you can play with the colormaps to change the rendering:
 
 
-
 - `random` :
 [hitomezashi_color_random_150.png](png/hitomezashi_color_random_150.png),
 
