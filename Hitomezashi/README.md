@@ -51,15 +51,15 @@ If you prefer colorized version you can play with the colormaps to change the re
 
 - `random` :
 [hitomezashi_cmap_Blues_random_150_nq30.png](png/hitomezashi_cmap_Blues_random_150_nq30.png), [hitomezashi_cmap_Blues_random_150_nq30.pdf](pdf/hitomezashi_cmap_Blues_random_150_nq30.pdf)
-<img src="https://github.com/josephsalmon/Tweets/blob/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg" width="400" height="400">
+<img src="png/hitomezashi_cmap_Blues_random_150_nq30.png" width="400" height="400">
 
 - `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_cmap_RdBu_exp_150_nq30.png](png/hitomezashi_cmap_RdBu_exp_150_nq30.png),
 [hitomezashi_cmap_RdBu_exp_150_nq30.pdf](pdf/hitomezashi_cmap_RdBu_exp_150_nq30.png)
-<img src="svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
+<img src="png/hitomezashi_cmap_RdBu_exp_150_nq30.png" width="400" height="400">
 
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf)
-<img src="svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
+<img src="png/hitomezashi_cmap_viridis_pi_150_nq30.png" width="400" height="400">
 
 - `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf)
-<img src="svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitiz" width="400" height="400">
+<img src="png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png" width="400" height="400">
