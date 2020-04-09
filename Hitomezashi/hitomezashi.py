@@ -7,7 +7,6 @@ Inkscape advice:
 https://graphicdesign.stackexchange.com/questions/15450/remove-background-based-on-color-in-inkscape
 April 05, 2020
 """
-
 import os
 import matplotlib
 import matplotlib.pylab as plt
@@ -19,8 +18,9 @@ from skimage import measure
 # color_style = 'nb'
 color_style = 'viridis'
 color_style = 'twilight'
+color_style = 'twilight_shifted'
 # color_style = 'RdBu'
-# color_style ='Blues'
+color_style ='Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
 # color_style = 'gist_earth'
@@ -29,12 +29,13 @@ color_style = 'twilight'
 
 if color_style is 'nb':
     cmap = plt.get_cmap('Greys')
-else:    # cmap = matplotlib.cm.twilight_shifted
+else:
     cmap = plt.get_cmap(color_style)
 
 # Saving activated:
-saving = True
+saving = False
 
+# Quantifzation level for colored images
 n_quant = 30
 # n_quant = 20
 
@@ -53,16 +54,19 @@ print("Export format is {}".format(img_format))
 nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
 # nature = 'pi'
-# nature = 'random'
+nature = 'random'
 # XXX random seed not funcitonal right now...
 seed = 12345
-np.random.RandomState(seed)
+r = np.random.RandomState(seed)
 # rng = np.random.default_rng(seed) # for future version of numpy,
 # see https://albertcthomas.github.io/good-practices-random-number-generators/
 
 # Size of the inflate ratio:
 inflate = 5
 # inflate = 5, means they are 5 spaces between dashes.
+
+# Mirror the row/columns
+mirror = True
 
 
 plt.close('all')
@@ -79,17 +83,29 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     elif nature is "pi":
         offset_row_str_int = nstr(pi / 10, n=n_digit + 3)
     elif nature is "random":
-        offset_row_str_int = nstr(rand(), n=n_digit + 3)
-    offset_row_str = offset_row_str_int[2:]
-    print("Seed={}".format(offset_row_str))
-    bin_matrix = np.zeros([n_digit, n_digit])
+        offset_row_str_int = np.array2string(r.randint(low=0, high=9,
+                                             size=n_digit + 3),
+                                             max_line_width=n_digit + 10,
+                                             separator='')
+        print(offset_row_str_int)
+        offset_row_str_int = offset_row_str_int[1:-1]
+    if mirror:
+        offset_row_str_int
+        n_pix = 2 * n_digit
+        offset_row_str = offset_row_str_int[2:] + offset_row_str_int[:1:-1]
+    else:
+        n_pix = n_digit
+        offset_row_str = offset_row_str_int[2:]
 
-    odd_row_pattern = np.zeros(n_digit,)
+    print("Seed={}".format(offset_row_str))
+    bin_matrix = np.zeros([n_pix, n_pix])
+
+    odd_row_pattern = np.zeros(n_pix,)
     odd_row_pattern[::2] = 1
-    even_row_pattern = np.zeros(n_digit,)
+    even_row_pattern = np.zeros(n_pix,)
     even_row_pattern[1::2] = 1
 
-    for i in range(n_digit):
+    for i in range(n_pix):
         if int(offset_row_str[i]) % 2 is 1:
             bin_matrix[i, :] = odd_row_pattern
         else:
@@ -98,7 +114,7 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     inflate_row = np.zeros([inflate, inflate])
     inflate_row[0, :] = 1
 
-    bin_matrix_kr = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
+    bin_matrix_kr = np.ones([inflate * n_pix + 1, inflate * n_pix + 1])
     bin_matrix_kr[:-1, : -1] = np.kron(bin_matrix, inflate_row)  # border issue
     bin_matrix_kr = np.clip(bin_matrix_kr + bin_matrix_kr.T, 0, 1)
 
@@ -106,15 +122,15 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
     bin_matrix_patch = 1 - bin_matrix  # missing dots top left
     inflate_row_patch = np.zeros([inflate, inflate])
     inflate_row_patch[0, 0] = 1
-    bin_matrix_kr_patch = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
+    bin_matrix_kr_patch = np.ones([inflate * n_pix + 1, inflate * n_pix + 1])
     bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch, inflate_row_patch)
     bin_matrix_kr_patch = np.clip(bin_matrix_kr_patch + bin_matrix_kr_patch.T,
                                   0, 1)
     hitomezashi_mat = np.clip(bin_matrix_kr + bin_matrix_kr_patch, 0, 1)
     hitomezashi_mat[0, :] = 1
     hitomezashi_mat[:, 0] = 1
-    hitomezashi_mat[n_digit * inflate, :] = 1
-    hitomezashi_mat[:, n_digit * inflate] = 1
+    hitomezashi_mat[n_pix * inflate, :] = 1
+    hitomezashi_mat[:, n_pix * inflate] = 1
 
     return hitomezashi_mat
 
@@ -135,13 +151,14 @@ if color_style is 'nb':
 # Color part
 else:
 
-    # symmetrization
+    # symmetry along the diagonal
     hitomezashi_labels_raw = measure.label(hitomezashi_mat, neighbors=4,
                                            background=1)
     hitomezashi_labels_init = np.triu(hitomezashi_labels_raw, k=1).T.copy() \
         + (np.triu(hitomezashi_labels_raw)).copy()
-    # get connected components label, and frequency
-    unique_elem, counts_elem = np.unique(hitomezashi_labels_init, return_counts=True)
+    # get connected components labels and frequency
+    unique_elem, counts_elem = np.unique(hitomezashi_labels_init,
+                                         return_counts=True)
 
     # Identify (smalle) unit squares to plot them white
     small_squares_labels = unique_elem[counts_elem <= (inflate - 1)**2]
@@ -187,11 +204,15 @@ def saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
         img_directory = os.path.join(os.getcwd(), img_format)
         if not os.path.isdir(img_directory):
             os.mkdir(img_directory)
+        if mirror:
+            part_name = 'hitomezashi_mirror_'
+        else:
+            part_name = 'hitomezashi_'
         if color_style is None:
-            filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit,
+            filename = part_name + '{}_{}.{}'.format(nature, n_digit,
                                                      img_format)
         else:
-            filename = 'hitomezashi_cmap_{}_{}_{}_nq{}.{}'.format(color_style,
+            filename = part_name + 'cmap_{}_{}_{}_nq{}.{}'.format(color_style,
                                                                   nature,
                                                                   n_digit,
                                                                   n_quant,
