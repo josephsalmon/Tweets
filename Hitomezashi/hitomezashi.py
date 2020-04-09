@@ -18,7 +18,8 @@ from skimage import measure
 # Color Style:
 # color_style = 'nb'
 color_style = 'viridis'
-# color_style ='RdBu'
+color_style = 'twilight'
+# color_style = 'RdBu'
 # color_style ='Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
@@ -35,7 +36,7 @@ else:    # cmap = matplotlib.cm.twilight_shifted
 saving = True
 
 n_quant = 30
-n_quant = 20
+# n_quant = 20
 
 
 # Size : number of columns/vector in the picture
@@ -44,15 +45,20 @@ mp.dps = n_digit + 3  # set number of digits
 
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "svg"
+img_format = "png"
 print("Export format is {}".format(img_format))
 
 
 # Seed" of the picture, default is random
-# nature = 'sqrt2'
+nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-nature = 'pi'
+# nature = 'pi'
 # nature = 'random'
+# XXX random seed not funcitonal right now...
+seed = 12345
+np.random.RandomState(seed)
+# rng = np.random.default_rng(seed) # for future version of numpy,
+# see https://albertcthomas.github.io/good-practices-random-number-generators/
 
 # Size of the inflate ratio:
 inflate = 5
