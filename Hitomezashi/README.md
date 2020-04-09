@@ -7,7 +7,7 @@ What is Hitomezashi? Here is an example:
 <img src="my_art/hitomezashi_exp_128_blue_orange.png" width="400" height="400">
 
 According to wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
-see https://en.wikipedia.org/wiki/Sashiko and also 
+see https://en.wikipedia.org/wiki/Sashiko and also
 https://www.romordesigns.com/journal/2018/10/18/sashiko-the-art-of-japanese-embroidery for some sewing examples.
 
 I became aware of this thanks to Annie Perkins Math Art Challenge:
@@ -21,21 +21,21 @@ The sequence of 1's and 0's (of size `n_iter`) used for the generation (the "see
 The little dash as drawn as follows:
 
 ## Column filling:
-- If the i-th digit is a 1, start the i-th column by a dash, then a blank, then a dash, then etc. 
-- If the i-th digit is a 0, start the i-th column by a blank, then a blank, then a dash, then etc. 
+- If the i-th digit is a 1, start the i-th column by a dash, then a blank, then a dash, then etc.
+- If the i-th digit is a 0, start the i-th column by a blank, then a blank, then a dash, then etc.
 
 ## Row filling:
-- If the i-th digit is a 1, start the i-th row by a dash, then a blank, then a dash, then etc. 
-- If the i-th digit is a 0, start the i-th row by a blank, then a blank, then a dash, then etc. 
+- If the i-th digit is a 1, start the i-th row by a dash, then a blank, then a dash, then etc.
+- If the i-th digit is a 0, start the i-th row by a blank, then a blank, then a dash, then etc.
 
 The provided code proposes as "seeds" sequences from either: a random sequence (default) or the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}">:
 
-- `random` : 
+- `random` :
 [hitomezashi_random_50.png](png/hitomezashi_random_50.png), [hitomezashi_random_50.pdf](pdf/hitomezashi_random_50.pdf)
 
 <img src="png/hitomezashi_random_50.png" width="400" height="400">
 
-- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">: 
+- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_exp_50.png](png/hitomezashi_exp_50.png),
 [hitomezashi_exp_50.pdf](pdf/hitomezashi_exp_50.png)
 
@@ -53,19 +53,19 @@ If you prefer colorized version you can play with the colormaps to change the re
 
 
 
-- `random` : 
-[hitomezashi_color_random_150.png](png/hitomezashi_color_random_150.png), 
+- `random` :
+[hitomezashi_color_random_150.png](png/hitomezashi_color_random_150.png),
 
 <img src="png/hitomezashi_color_random_150.png" width="400" height="400">
 
-- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">: 
+- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_color_exp_150.png](png/hitomezashi_color_exp_150.png),
 
 <img src="png/hitomezashi_color_exp_150.png" width="400" height="400">
 
-- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">:[hitomezashi_color_pi_150.png](png/hitomezashi_color_pi_150.png), 
+- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">:[hitomezashi_cmap_viridis_pi_150_nq20.svg](svg/hitomezashi_cmap_viridis_pi_150_nq20.svg),
 
-<img src="png/hitomezashi_color_pi_150.png" width="400" height="400">
+<img src="svg/hitomezashi_cmap_viridis_pi_150_nq20.svg" width="400" height="400">
 
 -`sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_color_sqrt2_150.png](png/hitomezashi_color_sqrt2_150.png),
 

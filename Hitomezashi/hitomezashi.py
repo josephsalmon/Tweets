@@ -15,15 +15,15 @@ import numpy as np
 from mpmath import exp, nstr, sqrt, mp, pi, rand
 from skimage import measure
 
-# Color Style
-color_style = 'nb'
-color_style = 'coolwarm'
-# color_style = 'viridis'
+# Color Style:
+# color_style = 'nb'
+color_style = 'viridis'
 # color_style ='RdBu'
 # color_style ='Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
-color_style = 'gist_earth'
+# color_style = 'gist_earth'
+# color_style = 'coolwarm'
 
 
 if color_style is 'nb':
@@ -31,15 +31,20 @@ if color_style is 'nb':
 else:    # cmap = matplotlib.cm.twilight_shifted
     cmap = plt.get_cmap(color_style)
 
-color_quantif = 30
+# Saving activated:
+saving = True
+
+n_quant = 30
+n_quant = 20
+
 
 # Size : number of columns/vector in the picture
-n_digit = 140
+n_digit = 150
 mp.dps = n_digit + 3  # set number of digits
 
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "png"
+img_format = "svg"
 print("Export format is {}".format(img_format))
 
 
@@ -53,8 +58,6 @@ nature = 'pi'
 inflate = 5
 # inflate = 5, means they are 5 spaces between dashes.
 
-# Saving activated:
-saving = True
 
 plt.close('all')
 
@@ -140,8 +143,8 @@ else:
 
     # Handle bla
     hitomezashi_labels = np.zeros(hitomezashi_labels_init.shape)
-    if color_quantif > 1:
-        hitomezashi_labels = (hitomezashi_labels_init % color_quantif) + 1
+    if n_quant > 1:
+        hitomezashi_labels = (hitomezashi_labels_init % n_quant) + 1
     else:
         hitomezashi_labels = hitomezashi_labels_init
 
@@ -182,11 +185,11 @@ def saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
             filename = 'hitomezashi_{}_{}.{}'.format(nature, n_digit,
                                                      img_format)
         else:
-
-            filename = 'hitomezashi_color_{}_{}_{}.{}'.format(color_style,
-                                                              nature,
-                                                              n_digit,
-                                                              img_format)
+            filename = 'hitomezashi_cmap_{}_{}_{}_nq{}.{}'.format(color_style,
+                                                                  nature,
+                                                                  n_digit,
+                                                                  n_quant,
+                                                                  img_format)
 
         fig.savefig(os.path.join(os.getcwd(), img_format, filename),
                     pad_inches=0, format=img_format,
