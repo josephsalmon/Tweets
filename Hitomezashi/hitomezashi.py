@@ -14,18 +14,22 @@ import numpy as np
 from mpmath import exp, nstr, sqrt, mp, pi, rand
 from skimage import measure
 
+
+# Quantifzation level for colored images (n_quant = 2 is slow though)
+n_quant = 2
+
 # Color Style:
+color_style = 'tab20'
 # color_style = 'nb'
-color_style = 'twilight_shifted'
-color_style = 'RdBu'
-color_style = 'twilight'
-color_style = 'viridis'
+# color_style = 'twilight_shifted'
+# color_style = 'RdBu'
+# color_style = 'twilight'
+# color_style = 'viridis'
 # color_style = 'Blues'
 # color_style = 'PRGn'
 # color_style = 'Dark2'
 # color_style = 'gist_earth'
 # color_style = 'coolwarm'
-
 
 if color_style is 'nb':
     cmap = plt.get_cmap('Greys')
@@ -35,18 +39,13 @@ else:
 # Saving activated:
 saving = True
 
-# Quantifzation level for colored images
-n_quant = 30
-# n_quant = 20
-
-
 # Size : number of columns/vector in the picture
-n_digit = 150
+n_digit = 60
 mp.dps = n_digit + 3  # set number of digits
 
 
 # export format: pdf, png, svg (bad interpolation though!)
-img_format = "png"
+img_format = "svg"
 print("Export format is {}".format(img_format))
 
 
@@ -142,7 +141,7 @@ if color_style is 'nb':
 
 
 # Color part
-else:
+elif color_style is not'color' and n_quant > 2:
     # symmetry along the diagonal
     hito_lbls_raw = measure.label(hito_mat, neighbors=4,
                                   background=1)
@@ -192,6 +191,53 @@ else:
     fig, ax = plt.subplots(1, 1, figsize=(5, 5))
     plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
                interpolation='none', aspect='equal')
+    ax.set_axis_off()
+    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+    plt.show()
+else:
+    # Black pixels
+    black_mask = hito_mat > 0.5
+    hito_lbls_raw = measure.label(hito_mat, neighbors=4,
+                                  background=1)
+    n1, n2 = np.shape(hito_mat)
+    bin_matt = np.full([n1, n2], -1)
+    diff_hito_v = np.zeros_like(hito_mat)
+    diff_hito_v[:, 1:] = np.diff(hito_mat, axis=1)
+    diff_hito_h = np.zeros_like(hito_mat)
+    diff_hito_h[1:, :] = np.diff(hito_mat, axis=0)
+    last_value = 0
+    # Iinit border north and wesst.
+    for j in range(n2):
+            if (diff_hito_v[1, j] == -1):
+                last_value = 1 - last_value
+                bin_matt[hito_lbls_raw == hito_lbls_raw[1, j]] = last_value
+    last_value = 0
+    for i in range(n1):
+            if (diff_hito_h[i, 1] == -1):
+                last_value = 1 - last_value
+                bin_matt[hito_lbls_raw == hito_lbls_raw[i, 1]] = last_value
+
+    for j in range(2, n2, 1):
+        print(j / n2)
+        if bin_matt[1, j] < 0:
+            current_col = bin_matt[1, j - 1]
+            current_class = hito_lbls_raw[1, j - 1]
+        else:
+            current_col = bin_matt[1, j]
+            current_class = hito_lbls_raw[1, j]
+        for i in range(2, n1, 1):
+            if (hito_lbls_raw[i, j] > 0):
+                bin_matt[hito_lbls_raw == hito_lbls_raw[i, j]] = current_col
+                if current_class != hito_lbls_raw[i, j]:
+                    current_class = hito_lbls_raw[i, j]
+                    current_col = 1 - current_col
+    bin_matt[black_mask] = -1
+    cmap.set_bad(color='k')
+
+    masked_array = np.ma.masked_where(bin_matt == -1,
+                                      bin_matt)
+    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+    ax.imshow(masked_array, cmap=cmap, interpolation='none', aspect='equal')
     ax.set_axis_off()
     plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
     plt.show()
