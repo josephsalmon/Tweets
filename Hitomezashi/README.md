@@ -16,7 +16,7 @@ A nice video on the topic is provided by her at:
 https://twitter.com/anniek_p/status/1244220881347502080.
 
 
-The way the Python code  [hitomezashi.py](hitomezashi.py)is as follows: the size of the image is governed by `n_iter`, and the output will draw a `n_iter x n_iter` figure.
+The way the Python code [hitomezashi.py](hitomezashi.py) produces the images on this page is as follows: the size of the image is governed by `n_iter`, and the output will draw a `n_iter x n_iter` figure.
 The sequence of 1's and 0's (of size `n_iter`) used for the generation (the "seed"), has several options (see below).
 The little dash as drawn as follows:
 

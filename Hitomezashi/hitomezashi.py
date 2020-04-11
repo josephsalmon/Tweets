@@ -50,9 +50,9 @@ print("Export format is {}".format(img_format))
 
 
 # Seed" of the picture, default is random
-# nature = 'sqrt2'
+nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-nature = 'pi'
+# nature = 'pi'
 # nature = 'random'
 # XXX random seed not funcitonal right now...
 seed = 123456
