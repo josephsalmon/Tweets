@@ -124,16 +124,10 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate,
     else:
         for i in range(inflate - 2):
             inflate_row_patch[i, inflate - i - 1] = 1
-    plt.figure()
-    plt.imshow(inflate_row_patch)
-    plt.show()
     bin_matrix_kr_patch = np.ones([inflate * n_digit + 1,
                                    inflate * n_digit + 1])
     bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch,
                                              inflate_row_patch)
-    plt.figure()
-    plt.imshow(bin_matrix_kr_patch)
-    plt.show()
 
     bin_matrix_kr_patch = np.clip(bin_matrix_kr_patch + bin_matrix_kr_patch.T,
                                   0, 1)
