@@ -11,70 +11,14 @@ import os
 import matplotlib
 import matplotlib.pylab as plt
 import numpy as np
-from mpmath import exp, nstr, sqrt, mp, pi, rand
+from mpmath import exp, nstr, sqrt, pi
 from skimage import measure
 
-# Saving activated:
-saving = False
 
-# Quantifzation level for colored images (n_quant = 2 is slow though)
-# best pi 14? 25? 31? 34?
-n_quant = 31
-
-# Color Style:
-color_style = 'tab20'
-# color_style = 'nb'
-color_style = 'twilight_shifted'
-color_style = 'RdBu'
-# color_style = 'twilight'
-# color_style = 'viridis'
-# color_style = 'Blues'
-# color_style = 'PRGn'
-# color_style = 'Dark2'
-# color_style = 'gist_earth'
-# color_style = 'coolwarm'
-
-
-if color_style is 'nb':
-    cmap = plt.get_cmap('Greys')
-else:
-    cmap = plt.get_cmap(color_style)
-
-# Size : number of columns/vector in the picture
-n_digit = 250
-mp.dps = n_digit + 3  # set number of digits
-
-
-# export format: pdf, png, svg (bad interpolation though!)
-img_format = "svg"
-print("Export format is {}".format(img_format))
-
-
-# Seed" of the picture, default is random
-nature = 'sqrt2'
-# nature = 'exp'  # 'sqrt2'
-nature = 'pi'
-# nature = 'random'
-# XXX random seed not funcitonal right now...
-seed = 123456
-r = np.random.RandomState(seed)
-# rng = np.random.default_rng(seed) # for future version of numpy,
-# see https://albertcthomas.github.io/good-practices-random-number-generators/
-
-# Size of the inflate ratio:
-inflate = 5
-# inflate = 5, means they are 5 spaces between dashes.
-
-# Mirror the row/columns
-mirror = True
-
-
-plt.close('all')
-
-
-def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate,
-                     cartesian=True):
+def make_hitomezashi(n_digit=150, nature="cartesian", inflate=5,
+                     cartesian=True, seed=123456):
     """Main function to create a hitomezashi matrix."""
+    r = np.random.RandomState(seed)
     print('Type : {}'.format(nature))
     # Note: the " / 10 " below (and the i+2) is to avoid "." issues
     if nature is "exp":
@@ -139,150 +83,166 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate,
 
     return hito_mat
 
-
-hito_mat = make_hitomezashi(n_digit=n_digit, nature=nature)
-
-
-# Black an white part
-if color_style is 'nb':
-    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-    ax.imshow(hito_mat, cmap=cmap, interpolation='none',
-              aspect='equal')
-    ax.set_axis_off()
-    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
-    plt.show()
+#adapted from :
+# https://scipy-cookbook.readthedocs.io/items/Matplotlib_ColormapTransformations.html
 
 
-# Color part
-elif color_style is not'color' and n_quant > 2:
-    # symmetry along the diagonal
-    hito_lbls_raw = measure.label(hito_mat, neighbors=4,
-                                  background=1)
-    hito_lbls_init = np.triu(hito_lbls_raw, k=1).T.copy() \
-        + (np.triu(hito_lbls_raw)).copy()
-    # get connected components labels and frequency
-    unique_elem, counts_elem = np.unique(hito_lbls_init,
-                                         return_counts=True)
+def cmap_discretize(cmap, N, shift=15):
+    """Return a discrete colormap from the continuous colormap cmap.
+        cmap: colormap instance, eg. cm.jet. 
+        N: number of colors.
+    """
+    colors_i = np.concatenate((np.linspace(0, 1., N), (0., 0., 0., 0.)))
+    colors_rgba = cmap(np.roll(colors_i, shift))
+    indices = np.linspace(0, 1., N + 1)
+    cdict = {}
+    for ki, key in enumerate(('red', 'green', 'blue')):
+        cdict[key] = [(indices[i], colors_rgba[i - 1, ki],
+                      colors_rgba[i, ki]) for i in range(N + 1)]
+    # Return colormap object.
+    return matplotlib.colors.LinearSegmentedColormap(cmap.name + "_%d"%N, cdict, 1024)
 
-    # Identify (smalle) unit squares to plot them white
-    small_squares_labels = unique_elem[counts_elem <= (inflate - 1)**2]
-    small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
 
-    # Handle quantization
-    hito_lbls = np.zeros(hito_lbls_init.shape)
-    if n_quant > 1:
-        hito_lbls = (hito_lbls_init % n_quant) + 1
-    else:
-        hito_lbls = hito_lbls_init
+def plot_hitomezashi(hito_mat, n_digit=150, inflate=5, color_style='RdBu',
+                     n_qt=30, mirror=True, img_format="png", movie=True,
+                     nature="cartesian", saving=False, shift=15):
+    # Black an white part
+    if color_style is 'nb':
+        cmap = plt.get_cmap('Greys')
+        fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+        ax.imshow(hito_mat, cmap=cmap, interpolation='none',
+                  aspect='equal')
+        ax.set_axis_off()
+        plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+        plt.show()
 
-    # Black pixels
-    black_mask = hito_mat > 0.5
-    hito_lbls[black_mask] = -1
-    cmap.set_bad(color='k')
+    # Color part
+    elif color_style is not'color' and n_qt > 2:
+        cmap = plt.get_cmap(color_style)
+        cmap = cmap_discretize(cmap, shift)
+        # symmetry along the diagonal
+        hito_lbls_raw = measure.label(hito_mat, neighbors=4,
+                                      background=1)
+        hito_lbls_init = np.triu(hito_lbls_raw, k=1).T.copy() \
+            + (np.triu(hito_lbls_raw)).copy()
+        # get connected components labels and frequency
+        unique_elem, counts_elem = np.unique(hito_lbls_init,
+                                             return_counts=True)
 
-    # White pixels
-    for val in small_squares_labels:
-        hito_lbls[hito_lbls_init == val] = -2
-    for val in small_squares_labels_dble:
-        hito_lbls[hito_lbls_init == val] = -2
-    cmap.set_under(color='w')
+        # Identify (smalle) unit squares to plot them white
+        small_squares_labels = unique_elem[counts_elem <= (inflate - 1)**2]
+        small_squares_labels_dble = unique_elem[counts_elem == 2 * (inflate - 1)**2]
 
-    if mirror:
-        new_labels = np.concatenate((np.concatenate((hito_lbls[:-1, :-1],
-                                     hito_lbls[:-1, -3::-1]), axis=1),
-                                     np.concatenate((hito_lbls[-3::-1, :-1],
-                                                     hito_lbls[-3::-1, -3::-1]),
-                                     axis=1)), axis=0)
-        masked_array = np.ma.masked_where(new_labels == -1,
-                                          new_labels)
-    else:
-        masked_array = np.ma.masked_where(hito_lbls == -1,
-                                          hito_lbls)
-    normalize = matplotlib.colors.Normalize(vmin=1,
-                                            vmax=np.max(hito_lbls[:]))
-
-    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-    plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
-               interpolation='none', aspect='equal')
-    ax.set_axis_off()
-    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
-    plt.show()
-else:
-    # Black pixels
-    black_mask = hito_mat > 0.5
-    hito_lbls_raw = measure.label(hito_mat, neighbors=4,
-                                  background=1)
-    n1, n2 = np.shape(hito_mat)
-    bin_matt = np.full([n1, n2], -1)
-    diff_hito_v = np.zeros_like(hito_mat)
-    diff_hito_v[:, 1:] = np.diff(hito_mat, axis=1)
-    diff_hito_h = np.zeros_like(hito_mat)
-    diff_hito_h[1:, :] = np.diff(hito_mat, axis=0)
-    last_value = 0
-    # Iinit border north and wesst.
-    for j in range(n2):
-            if (diff_hito_v[1, j] == -1):
-                last_value = 1 - last_value
-                bin_matt[hito_lbls_raw == hito_lbls_raw[1, j]] = last_value
-    last_value = 0
-    for i in range(n1):
-            if (diff_hito_h[i, 1] == -1):
-                last_value = 1 - last_value
-                bin_matt[hito_lbls_raw == hito_lbls_raw[i, 1]] = last_value
-
-    for j in range(2, n2, 1):
-        print(j / n2)
-        if bin_matt[1, j] < 0:
-            current_col = bin_matt[1, j - 1]
-            current_class = hito_lbls_raw[1, j - 1]
+        # Handle quantization
+        hito_lbls = np.zeros(hito_lbls_init.shape)
+        if n_qt > 1:
+            hito_lbls = (hito_lbls_init % n_qt) + 1
         else:
-            current_col = bin_matt[1, j]
-            current_class = hito_lbls_raw[1, j]
-        for i in range(2, n1, 1):
-            if (hito_lbls_raw[i, j] > 0):
-                bin_matt[hito_lbls_raw == hito_lbls_raw[i, j]] = current_col
-                if current_class != hito_lbls_raw[i, j]:
-                    current_class = hito_lbls_raw[i, j]
-                    current_col = 1 - current_col
-    bin_matt[black_mask] = -1
-    cmap.set_bad(color='k')
+            hito_lbls = hito_lbls_init
 
-    masked_array = np.ma.masked_where(bin_matt == -1,
-                                      bin_matt)
-    fig, ax = plt.subplots(1, 1, figsize=(5, 5))
-    ax.imshow(masked_array, cmap=cmap, interpolation='none', aspect='equal')
-    ax.set_axis_off()
-    plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
-    plt.show()
+        # Black pixels
+        black_mask = hito_mat > 0.5
+        hito_lbls[black_mask] = -1
+        cmap.set_bad(color='k')
 
+        # White pixels
+        for val in small_squares_labels:
+            hito_lbls[hito_lbls_init == val] = -2
+        for val in small_squares_labels_dble:
+            hito_lbls[hito_lbls_init == val] = -2
+        cmap.set_under(color='w')
 
-def saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
-                       img_format=img_format, saving=saving,
-                       color_style=color_style):
-    """Saving part."""
-    if saving:
-        img_directory = os.path.join(os.getcwd(), img_format)
-        if not os.path.isdir(img_directory):
-            os.mkdir(img_directory)
         if mirror:
-            part_name = 'hitomezashi_mirror_'
+            new_labels = np.concatenate((np.concatenate((hito_lbls[:-1, :-1],
+                                         hito_lbls[:-1, -3::-1]), axis=1),
+                                         np.concatenate((hito_lbls[-3::-1, :-1],
+                                                         hito_lbls[-3::-1, -3::-1]),
+                                         axis=1)), axis=0)
+            masked_array = np.ma.masked_where(new_labels == -1,
+                                              new_labels)
         else:
-            part_name = 'hitomezashi_'
-        if color_style is None:
-            filename = part_name + '{}_{}.{}'.format(nature, n_digit,
-                                                     img_format)
-        else:
-            filename = part_name + 'cmap_{}_{}_{}_nq{}.{}'.format(color_style,
-                                                                  nature,
-                                                                  n_digit,
-                                                                  n_quant,
-                                                                  img_format)
+            masked_array = np.ma.masked_where(hito_lbls == -1,
+                                              hito_lbls)
+        normalize = matplotlib.colors.Normalize(vmin=1,
+                                                vmax=np.max(hito_lbls[:]))
 
-        fig.savefig(os.path.join(os.getcwd(), img_format, filename),
-                    pad_inches=0, format=img_format,
-                    bbox_inches=None, transparent=True)
+        fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+        plt.imshow(masked_array, cmap=cmap, vmin=1, norm=normalize,
+                   interpolation='none', aspect='equal')
+        ax.set_axis_off()
+        plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+        plt.show()
+    else:
+        # Black pixels
+        black_mask = hito_mat > 0.5
+        hito_lbls_raw = measure.label(hito_mat, neighbors=4,
+                                      background=1)
+        n1, n2 = np.shape(hito_mat)
+        bin_matt = np.full([n1, n2], -1)
+        diff_hito_v = np.zeros_like(hito_mat)
+        diff_hito_v[:, 1:] = np.diff(hito_mat, axis=1)
+        diff_hito_h = np.zeros_like(hito_mat)
+        diff_hito_h[1:, :] = np.diff(hito_mat, axis=0)
+        last_value = 0
+        # Iinit border north and wesst.
+        for j in range(n2):
+                if (diff_hito_v[1, j] == -1):
+                    last_value = 1 - last_value
+                    bin_matt[hito_lbls_raw == hito_lbls_raw[1, j]] = last_value
+        last_value = 0
+        for i in range(n1):
+                if (diff_hito_h[i, 1] == -1):
+                    last_value = 1 - last_value
+                    bin_matt[hito_lbls_raw == hito_lbls_raw[i, 1]] = last_value
 
+        for j in range(2, n2, 1):
+            print(j / n2)
+            if bin_matt[1, j] < 0:
+                current_col = bin_matt[1, j - 1]
+                current_class = hito_lbls_raw[1, j - 1]
+            else:
+                current_col = bin_matt[1, j]
+                current_class = hito_lbls_raw[1, j]
+            for i in range(2, n1, 1):
+                if (hito_lbls_raw[i, j] > 0):
+                    bin_matt[hito_lbls_raw == hito_lbls_raw[i, j]] = current_col
+                    if current_class != hito_lbls_raw[i, j]:
+                        current_class = hito_lbls_raw[i, j]
+                        current_col = 1 - current_col
+        bin_matt[black_mask] = -1
+        cmap.set_bad(color='k')
 
-saving_hitomezashi(fig, nature=nature, n_digit=n_digit,
-                   img_format=img_format, saving=saving,
-                   color_style=color_style)
+        masked_array = np.ma.masked_where(bin_matt == -1,
+                                          bin_matt)
+        fig, ax = plt.subplots(1, 1, figsize=(5, 5))
+        ax.imshow(masked_array, cmap=cmap, interpolation='none', aspect='equal')
+        ax.set_axis_off()
+        plt.subplots_adjust(top=0.9, bottom=0.1, left=0.1, right=0.9)
+        plt.show()
+
+    """Saving part."""
+    if movie:
+        img_format_directory = os.path.join(os.getcwd(), img_format + "_movie")
+    else:
+        img_format_directory = os.path.join(os.getcwd(), img_format)
+    if not os.path.isdir(img_format_directory):
+        os.mkdir(img_format_directory)
+    img_directory = os.path.join(img_format_directory, color_style)
+    if not os.path.isdir(img_directory):
+        os.mkdir(img_directory)
+    if mirror:
+        part_name = 'hitomezashi_mirror_'
+    else:
+        part_name = 'hitomezashi_'
+    if color_style is None:
+        filename = part_name + '{}_{}.{}'.format(nature, n_digit,
+                                                 img_format)
+    else:
+        filename = part_name + 'cmap_{}_{}_nq{}.{}'.format(nature,
+                                                           n_digit,
+                                                           str(shift).zfill(3),
+                                                           img_format)
+    fig.savefig(os.path.join(img_directory, filename),
+                pad_inches=0, format=img_format,
+                bbox_inches=None, transparent=True)
+    return img_directory, filename
