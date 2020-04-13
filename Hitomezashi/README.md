@@ -6,6 +6,12 @@ What is Hitomezashi? Here is an example:
 
 <img src="my_art/hitomezashi_exp_128_blue_orange.png" width="400" height="400">
 
+and animated ones:
+
+<img src="my_art/expRdBu150.gif" width="200" height="200">
+<img src="my_art/piRdBu150.gif" width="200" height="200">
+<img src="my_art/sqrt2RdBu150.gif" width="200" height="200">
+
 According to wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
 see https://en.wikipedia.org/wiki/Sashiko and also
 https://www.romordesigns.com/journal/2018/10/18/sashiko-the-art-of-japanese-embroidery for some sewing examples.
