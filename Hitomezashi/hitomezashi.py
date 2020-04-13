@@ -14,15 +14,18 @@ import numpy as np
 from mpmath import exp, nstr, sqrt, mp, pi, rand
 from skimage import measure
 
+# Saving activated:
+saving = False
 
 # Quantifzation level for colored images (n_quant = 2 is slow though)
-n_quant = 2
+# best pi 14? 25? 31? 34?
+n_quant = 31
 
 # Color Style:
 color_style = 'tab20'
 # color_style = 'nb'
-# color_style = 'twilight_shifted'
-# color_style = 'RdBu'
+color_style = 'twilight_shifted'
+color_style = 'RdBu'
 # color_style = 'twilight'
 # color_style = 'viridis'
 # color_style = 'Blues'
@@ -31,16 +34,14 @@ color_style = 'tab20'
 # color_style = 'gist_earth'
 # color_style = 'coolwarm'
 
+
 if color_style is 'nb':
     cmap = plt.get_cmap('Greys')
 else:
     cmap = plt.get_cmap(color_style)
 
-# Saving activated:
-saving = True
-
 # Size : number of columns/vector in the picture
-n_digit = 60
+n_digit = 250
 mp.dps = n_digit + 3  # set number of digits
 
 
@@ -52,7 +53,7 @@ print("Export format is {}".format(img_format))
 # Seed" of the picture, default is random
 nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-# nature = 'pi'
+nature = 'pi'
 # nature = 'random'
 # XXX random seed not funcitonal right now...
 seed = 123456
@@ -71,7 +72,8 @@ mirror = True
 plt.close('all')
 
 
-def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
+def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate,
+                     cartesian=True):
     """Main function to create a hitomezashi matrix."""
     print('Type : {}'.format(nature))
     # Note: the " / 10 " below (and the i+2) is to avoid "." issues
@@ -104,18 +106,35 @@ def make_hitomezashi(n_digit=n_digit, nature=nature, inflate=inflate):
             bin_matrix[i, :] = even_row_pattern
 
     inflate_row = np.zeros([inflate, inflate])
-    inflate_row[0, :] = 1
+    if cartesian:
+        inflate_row[0, :] = 1
+    else:
+        for i in range(inflate):
+            inflate_row[i, i] = 1
 
     bin_matrix_kr = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
-    bin_matrix_kr[:-1, : -1] = np.kron(bin_matrix, inflate_row)  # border issue
+    bin_matrix_kr[:-1, : -1] = np.kron(bin_matrix, inflate_row)  # border excl.
     bin_matrix_kr = np.clip(bin_matrix_kr + bin_matrix_kr.T, 0, 1)
 
     # Corner / padding issues
     bin_matrix_patch = 1 - bin_matrix  # missing dots top left
     inflate_row_patch = np.zeros([inflate, inflate])
-    inflate_row_patch[0, 0] = 1
-    bin_matrix_kr_patch = np.ones([inflate * n_digit + 1, inflate * n_digit + 1])
-    bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch, inflate_row_patch)
+    if cartesian:
+        inflate_row_patch[0, 0] = 1
+    else:
+        for i in range(inflate - 2):
+            inflate_row_patch[i, inflate - i - 1] = 1
+    plt.figure()
+    plt.imshow(inflate_row_patch)
+    plt.show()
+    bin_matrix_kr_patch = np.ones([inflate * n_digit + 1,
+                                   inflate * n_digit + 1])
+    bin_matrix_kr_patch[:-1, : -1] = np.kron(bin_matrix_patch,
+                                             inflate_row_patch)
+    plt.figure()
+    plt.imshow(bin_matrix_kr_patch)
+    plt.show()
+
     bin_matrix_kr_patch = np.clip(bin_matrix_kr_patch + bin_matrix_kr_patch.T,
                                   0, 1)
     hito_mat = np.clip(bin_matrix_kr + bin_matrix_kr_patch, 0, 1)
@@ -176,9 +195,9 @@ elif color_style is not'color' and n_quant > 2:
 
     if mirror:
         new_labels = np.concatenate((np.concatenate((hito_lbls[:-1, :-1],
-                                     hito_lbls[:-1, -2::-1]), axis=1),
-                                     np.concatenate((hito_lbls[-2::-1, :-1],
-                                                     hito_lbls[-2::-1, -2::-1]),
+                                     hito_lbls[:-1, -3::-1]), axis=1),
+                                     np.concatenate((hito_lbls[-3::-1, :-1],
+                                                     hito_lbls[-3::-1, -3::-1]),
                                      axis=1)), axis=0)
         masked_array = np.ma.masked_where(new_labels == -1,
                                           new_labels)
