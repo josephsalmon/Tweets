@@ -8,9 +8,9 @@ What is Hitomezashi? Here is an example:
 
 and animated ones:
 <p float="left">
-<img src="my_art/expRdBu150.gif"  height="400">
-<img src="my_art/piRdBu150.gif" height="400">
-<img src="my_art/sqrt2RdBu150.gif" width="400">
+<img src="my_art/expRdBu150.gif"  height="300">
+<img src="my_art/piRdBu150.gif" height="300">
+<img src="my_art/sqrt2RdBu150.gif" width="300">
 </p>
 According to wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
 see https://en.wikipedia.org/wiki/Sashiko and also
