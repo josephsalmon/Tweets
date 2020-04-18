@@ -9,12 +9,7 @@ import matplotlib.pyplot as plt
 # from matplotlib import rc
 import seaborn as sns
 from os import mkdir, path
-import cmath
 import matplotlib.lines as lines
-
-# Uncomment the following 2 lines for Mac OS X / Spyder for using Tex display
-# import os as macosx
-# macosx.environ['PATH'] = macosx.environ['PATH'] + ':/usr/texbin'
 
 ###############################################################################
 # Plot initialization
@@ -24,7 +19,6 @@ if not path.exists(dirname):
     mkdir(dirname)
 
 imageformat = '.pdf'
-# rc('font', **{'family': 'sans-serif', 'sans-serif': ['Computer Modern Roman']})
 params = {'axes.labelsize': 16,
           'font.size': 23,
           'legend.fontsize': 12,
@@ -35,51 +29,7 @@ params = {'axes.labelsize': 16,
 plt.rcParams.update(params)
 plt.close("all")
 
-
-###############################################################################
-# PCA interpretation
-
 color_blind_list = sns.color_palette("colorblind", 8)
-
-
-nb_points = 6
-
-# Hexagone
-# points = [cmath.exp(1j * 2 * np.pi * i / nb_points) for i in range(nb_points)]
-
-# lines:
-# points = [0, 1, 2 + 1j, 4 + 2j, 4 + 4j, 2 + 2j, 1 + 3j, 2j]
-
-minval_x = -4
-maxval_x = 4
-minval_y = -3
-maxval_y = 3
-# for i in range(len(points)):
-#     minval_x = min(minval_x, points[i].real)
-#     maxval_x = max(maxval_x, points[i].real)
-#     minval_y = min(minval_y, points[i].real)
-#     maxval_y = max(maxval_y, points[i].real)
-
-deltax = 4 * (maxval_x - minval_x)
-deltay = 4 * (maxval_y - minval_y)
-
-# print(minval_x)
-# print(maxval_x)
-# print(minval_y)
-# print(maxval_y)
-
-sns.set_context("poster")
-sns.set_palette("colorblind")
-sns.set_style("white")
-sns.axes_style()
-fig = plt.figure()
-sub1 = fig.add_subplot(111)
-sub1.set_aspect('equal')
-sub1.set_ylim([1.2 * minval_x - deltax / 5, 1.2 * maxval_x + deltax / 5])
-sub1.set_xlim([1.2 * minval_y - deltay / 5, 1.2 * maxval_y + deltay / 5])
-sub1.get_yaxis().set_ticks([])
-sub1.get_xaxis().set_ticks([])
-sub1.axis('off')
 
 
 def compute_midpoints(points, t=0.5, closed=True):
@@ -87,11 +37,12 @@ def compute_midpoints(points, t=0.5, closed=True):
     midpoints = []
     max_num = len(points)
     for i in range(max_num):
-        midpoints.append(points[i % len(points)] * t + points[(i + 1) % len(points)] * (1 - t))
+        midpoints.append(points[i % len(points)] * t +
+                         points[(i + 1) % len(points)] * (1 - t))
     return midpoints
 
 
-def computer_mid_iter(points, nb_rec=12, t=0.5, closed=True):
+def computer_mid_iter(points, recursive_level=12, t=0.5, closed=True):
     """Return iterative lists of midpoints.
     Parameters
     ----------
@@ -106,26 +57,14 @@ def computer_mid_iter(points, nb_rec=12, t=0.5, closed=True):
     """
     newpoints = points.copy()
     list_traj = []
-    for i in range(nb_rec):
+    for i in range(recursive_level):
         newpoints = compute_midpoints(newpoints, t, closed=closed)
         list_traj.append(newpoints)
-    # print(newpoints)
     end_points = newpoints[-1]
     return list_traj, end_points
 
 
-# print(computer_mid_iter(points))
-# def cplx2pt(points):
-#     pt_float = []
-#     for in points:
-#         pt_float.append()
-#     return
-
-# for i in range(nb_points):
-#     midpoints
-
-
-def plot_traj(points, ax=sub1, color=color_blind_list[0],
+def plot_traj(points, ax, color=color_blind_list[0],
               lw=2, closed=True, alpha=1):
     """Plots line between points.
 
@@ -150,7 +89,7 @@ def plot_traj(points, ax=sub1, color=color_blind_list[0],
         ax.add_line(l)
 
 
-def plot_points(points, ax=sub1, color=color_blind_list[0], ms=2, alpha=1):
+def plot_points(points, ax, color=color_blind_list[0], ms=2, alpha=1):
     """Return iterative lists of midpoints.
 
     Parameters
@@ -166,47 +105,34 @@ def plot_points(points, ax=sub1, color=color_blind_list[0], ms=2, alpha=1):
         x1, y1 = points[i].real, points[i].imag
         ax.plot(x1, y1, 'o', color=color, ms=ms, alpha=alpha)
 
-# plot_traj(points, ax=sub1)
-# plot_points(points, ax=sub1, color=color_blind_list[0], ms=10)
-
 
 plt.show()
 # print(computer_mid_iter(points, t=0.5))
 
 
-def plot_trajs_points(points, nb_rec=12, ax=sub1, t=0.5, lw=2, closed=True,
+def plot_trajs_points(points, ax, recursive_level=12, t=0.5, lw=2, alpha=True,
+                      closed=True,
                       color=color_blind_list[0]):
-    list_traj, end_points = computer_mid_iter(points, nb_rec=nb_rec, t=t,
-                                              closed=closed)
-    # print(list_traj)
+    list_traj, end_points = computer_mid_iter(points,
+                                              recursive_level=recursive_level,
+                                              t=t, closed=closed)
     for i, points in enumerate(list_traj):
-        # print(1 - i / len(list_traj))
-        plot_traj(points, ax=sub1, closed=closed, alpha=1 - i / len(list_traj),
-                  lw=lw, color=color)
+        if alpha:
+            plot_traj(points, ax, closed=closed, alpha=1 - i / len(list_traj),
+                      lw=lw, color=color)
+        else:
+            plot_traj(points, ax, closed=closed, alpha=1,
+                      lw=lw, color=color)
     return end_points
 
+t = 0.08
+recursive_level = 55
+recursive_levels = np.arange(1, recursive_level)
+# t_vals = np.linspace(0, 1, num=96)
 
-def translate_polygone_centers(points):
-    new_centers = []
-    for i, values in enumerate(points):
-        new_centers.append(points[(i) % len(points)] + points[(i + 1) % len(points)])
-    return new_centers
-
-
-nb_rec = 70
-t_vals = np.linspace(0, 1, num=96)
 saving = True
 closed = True
 files = ''
-
-
-# hexagone_points = [cmath.exp(1j * 2 * np.pi * i / nb_points) for i in range(nb_points)]
-
-
-# new_centers = translate_polygone_centers(points)
-# new_centers.append(0)
-
-# list_points = []
 
 Triangle_ne1 = np.array([4, 2, 4 + 3j])
 Triangle_se1 = Triangle_ne1.real - 1j * Triangle_ne1.imag
@@ -231,7 +157,16 @@ list_points = [Triangle_ne1, Triangle_se1, Triangle_nw1, Triangle_sw1,
                Carre]
 # list_points = [Carre]
 
-for image_nb, t in enumerate(t_vals):
+minval_x = -4
+maxval_x = 4
+minval_y = -3
+maxval_y = 3
+
+alpha = False
+
+# for image_nb, t in enumerate(t_vals):
+for image_nb, recursive_level in enumerate(recursive_levels):
+
     sns.set_context("poster")
     sns.set_palette("colorblind")
     sns.set_style("white")
@@ -248,24 +183,33 @@ for image_nb, t in enumerate(t_vals):
         print(points)
         # blue:  color_blind_list[0]
         # Frame:
-        plot_traj(points, ax=sub1, color='k', lw=1, closed=closed)
+        plot_traj(points, sub1, color='k', lw=1, closed=closed)
         # Midpoints:
-        end_points = plot_trajs_points(points, nb_rec=nb_rec, ax=sub1, t=t,
+        end_points = plot_trajs_points(points, sub1, recursive_level=recursive_level,
+                                       t=t, alpha=alpha,
                                        lw=1, closed=closed, color='k')
     plt.show()
 
     if saving is True:
+        if alpha:
+            plt.savefig("for_nanou/prog_spline_no_alpha%s.png" % str(image_nb).zfill(3))
+            plt.savefig("for_nanou/prog_spline_no_alpha%s.pdf" % str(image_nb).zfill(3))
+            plt.savefig("for_nanou/prog_spline_no_alpha%s.svg" % str(image_nb).zfill(3))
 
-        plt.savefig("for_nanou/bezier_%s.png" % str(image_nb).zfill(3))
-        plt.savefig("for_nanou/bezier_%s.pdf" % str(image_nb).zfill(3))
-        plt.savefig("for_nanou/bezier_%s.svg" % str(image_nb).zfill(3))
+            files = files + ' for_nanou/prog_spline_no_alpha{}.png'.format(str(image_nb).zfill(3))
+        else:
+            plt.savefig("for_nanou/prog_spline_alpha%s.png" % str(image_nb).zfill(3))
+            plt.savefig("for_nanou/prog_spline_alpha%s.pdf" % str(image_nb).zfill(3))
+            plt.savefig("for_nanou/prog_spline_alpha%s.svg" % str(image_nb).zfill(3))
+            files = files + ' for_nanou/prog_spline_alpha{}.png'.format(str(image_nb).zfill(3))
 
-        files = files + ' for_nanou/bezier_{}.png'.format(str(image_nb).zfill(3))
+    print(files)
 
-        print(files)
+    plt.close('all')
 
-        plt.close('all')
+if alpha:
+    job = 'convert -layers optimize -delay 6 {} -coalesce -duplicate 1,-2-1 for_nanou/prog_spline_no_alpha.gif'.format(files)
+else:
+    job = 'convert -layers optimize -delay 6 {} -coalesce -duplicate 1,-2-1 for_nanou/prog_spline_alpha.gif'.format(files)
 
-
-job = 'convert -layers optimize -delay 6 {} -loop 1 for_nanou/Bezier.gif'.format(files)
 os.system(job)
