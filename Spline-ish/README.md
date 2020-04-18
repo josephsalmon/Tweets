@@ -14,5 +14,4 @@ and animated ones:
 <img src="my_art/prog_spline_alpha.gif" width="200">
 <img src="my_art/prog_spline_no_alpha.gif" width="200">
 <img src="my_art/a_la_harris_movie.gif" width="200">
-
 <img src="my_art/Hexagone_movie.gif" width="200">
