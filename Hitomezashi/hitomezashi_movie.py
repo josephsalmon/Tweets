@@ -45,9 +45,9 @@ img_format = "png"
 print("Export format is {}".format(img_format))
 
 # Seed" of the picture, default is random
-# nature = 'sqrt2'
+nature = 'sqrt2'
 # nature = 'exp'  # 'sqrt2'
-nature = 'pi'
+# nature = 'pi'
 # nature = 'random'
 
 # Size of the inflate ratio:
@@ -86,5 +86,5 @@ for shift in shifts:
 print(files)
 
 gif_name = os.path.join(path, nature + color_style + str(n_digit) + ".gif")
-job = 'convert -layers optimize -resize 1000 -delay 5 {} -layers OptimizePlus -quiet -coalesce -duplicate 1,-2-1 -loop 0 {}'.format(files, gif_name)
+job = 'convert -layers optimize -resize 1000 -delay 2 {} -layers OptimizePlus -quiet -coalesce -duplicate 1,-2-1 -loop 0 {}'.format(files, gif_name)
 os.system(job)
