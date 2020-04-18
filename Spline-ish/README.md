@@ -12,7 +12,6 @@ Some inspiration came from Jon Harris https://www.youtube.com/watch?v=C2vbYpa-AW
 and animated ones:
 
 <p float="left">
-
 <img src="my_art/prog_spline_alpha.gif" width="300">
 <img src="my_art/prog_spline_no_alpha.gif" width="300">
 <img src="my_art/a_la_harris_movie.gif" width="300">

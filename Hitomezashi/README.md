@@ -4,14 +4,14 @@ Here I provide some code for te numerical creation of Hitomezashi art.
 
 What is Hitomezashi? Here is an example:
 
-<img src="my_art/hitomezashi_exp_128_blue_orange.png" width="400" height="400">
+<img src="my_art/hitomezashi_exp_128_blue_orange.png" width="300">
 
 and animated ones:
-
-<img src="my_art/expRdBu150.gif" width="200" height="200">
-<img src="my_art/piRdBu150.gif" width="200" height="200">
-<img src="my_art/sqrt2RdBu150.gif" width="200" height="200">
-
+<p float="left">
+<img src="my_art/expRdBu150.gif"  height="400">
+<img src="my_art/piRdBu150.gif" height="400">
+<img src="my_art/sqrt2RdBu150.gif" width="400">
+</p>
 According to wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
 see https://en.wikipedia.org/wiki/Sashiko and also
 https://www.romordesigns.com/journal/2018/10/18/sashiko-the-art-of-japanese-embroidery for some sewing examples.
@@ -59,28 +59,28 @@ If you prefer colorized version you can play with the colormaps to change the re
 - `random` :
 [hitomezashi_cmap_Blues_random_150_nq30.png](png/hitomezashi_cmap_Blues_random_150_nq30.png), [hitomezashi_cmap_Blues_random_150_nq30.pdf](pdf/hitomezashi_cmap_Blues_random_150_nq30.pdf),
 [hitomezashi_cmap_Blues_random_150_nq30.svg](svg/hitomezashi_cmap_Blues_random_150_nq30.svg), with 
+<p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
-or without mirroring
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
-
+</p>
 
 - `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
 [hitomezashi_cmap_RdBu_exp_150_nq30.png](png/hitomezashi_cmap_RdBu_exp_150_nq30.png),
 [hitomezashi_cmap_RdBu_exp_150_nq30.pdf](pdf/hitomezashi_cmap_RdBu_exp_150_nq30.pdf),
-[hitomezashi_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg), with 
+[hitomezashi_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg), (wit or without mirroring)
+<p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
-or without mirroring
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
-
+</p>
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf),
-[hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg), 
-with 
+[hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg), (wit or without mirroring)
+<p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
-or without
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
-
+</p>
 - `sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
-[hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), with 
+[hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), (wit or without mirroring)
+<p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
-or without mirroring
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
+</p>
