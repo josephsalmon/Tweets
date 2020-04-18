@@ -12,7 +12,7 @@ and animated ones:
 <img src="my_art/piRdBu150.gif" height="300">
 <img src="my_art/sqrt2RdBu150.gif" width="300">
 </p>
-According to wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
+According to Wikipedia, Hitomezashi is particular form of Sashiko, a form of decorative reinforcement stitching,
 see https://en.wikipedia.org/wiki/Sashiko and also
 https://www.romordesigns.com/journal/2018/10/18/sashiko-the-art-of-japanese-embroidery for some sewing examples.
 
@@ -47,9 +47,11 @@ The provided code proposes as "seeds" sequences from either: a random sequence (
 <img src="png/hitomezashi_exp_50.png" width="400" height="400">
 
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
+
 <img src="png/hitomezashi_pi_50.png" width="400" height="400">
 
 - `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
+
 <img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
 
 
@@ -59,6 +61,7 @@ If you prefer colorized version you can play with the colormaps to change the re
 - `random` :
 [hitomezashi_cmap_Blues_random_150_nq30.png](png/hitomezashi_cmap_Blues_random_150_nq30.png), [hitomezashi_cmap_Blues_random_150_nq30.pdf](pdf/hitomezashi_cmap_Blues_random_150_nq30.pdf),
 [hitomezashi_cmap_Blues_random_150_nq30.svg](svg/hitomezashi_cmap_Blues_random_150_nq30.svg), with 
+
 <p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
@@ -68,18 +71,21 @@ If you prefer colorized version you can play with the colormaps to change the re
 [hitomezashi_cmap_RdBu_exp_150_nq30.png](png/hitomezashi_cmap_RdBu_exp_150_nq30.png),
 [hitomezashi_cmap_RdBu_exp_150_nq30.pdf](pdf/hitomezashi_cmap_RdBu_exp_150_nq30.pdf),
 [hitomezashi_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg), (wit or without mirroring)
+
 <p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
 </p>
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf),
 [hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg), (wit or without mirroring)
+
 <p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
 </p>
 - `sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
 [hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), (wit or without mirroring)
+
 <p float="left">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
