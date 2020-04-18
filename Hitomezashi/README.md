@@ -76,6 +76,7 @@ If you prefer colorized version you can play with the colormaps to change the re
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
 </p>
+
 - `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf),
 [hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg), (wit or without mirroring)
 
@@ -83,6 +84,7 @@ If you prefer colorized version you can play with the colormaps to change the re
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
 <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
 </p>
+
 - `sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
 [hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), (wit or without mirroring)
 
