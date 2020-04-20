@@ -20,3 +20,5 @@ and animated ones:
 
 
 More on splines and Bezier curves: https://medium.com/@Acegikmo/the-ever-so-lovely-b%C3%A9zier-curve-eb27514da3bf
+and 
+https://www.jasondavies.com/animated-bezier/
