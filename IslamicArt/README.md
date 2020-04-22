@@ -13,7 +13,7 @@ https://arbitrarilyclose.com/ an
 <img src="svg/ten_star.svg?sanitize=true" width="300">
 </p>
 
-and colored with Inkscape:
+- colored with Inkscape:
 
 <p float="left">
 <img src="svg/ten_star_color.svg" width="300">
