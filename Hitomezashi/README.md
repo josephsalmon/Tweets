@@ -44,8 +44,11 @@ The provided code proposes various "seeds", i.e.,  sequences to start the proces
 
 Type | Black and white             |  Colored | Symmetrized and colored
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-`random` | ![pdf/hitomezashi_random_50.pdf](png/hitomezashi_random_50.png)  |  ![svg/hitomezashi_cmap_Blues_random_150_nq30.svg](svg/hitomezashi_cmap_Blues_random_150_nq30.svg) | ![svg/hitomezashi_cmap_Blues_random_150_nq30.svg](svg/hitomezashi_cmap_Blues_random_150_nq30.svg)
-`exp` | ![pdf/hitomezashi_exp_50.pdf](png/hitomezashi_exp_50.png)  |  ![svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg) | ![svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg)
+`random` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_random_150_nq015.svg?sanitize=true" width="400"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
+`exp` | ![pdf/hitomezashi_exp_50.pdf](png/hitomezashi_exp_50.png)  |<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
+
+
+![svg/.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg) | ![svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg)
 `pi` | ![pdf/hitomezashi_pi_50.pdf](png/hitomezashi_pi_50.png)  |  ![svg/hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg) | ![svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg)
 `sqrt2` | ![pdf/hitomezashi_sqrt2_50.pdf](png/hitomezashi_sqrt2_50.png)  |  ![svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg) | ![svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg)
 
