@@ -24,8 +24,8 @@ n_qt = 30
 
 # Color Style:
 # color_style = 'tab20'
-color_style = 'nb'
-# color_style = 'twilight_shifted'
+# color_style = 'nb'
+color_style = 'twilight_shifted'
 # color_style = 'RdBu'
 # color_style = 'twilight'
 # color_style = 'viridis'
@@ -49,14 +49,14 @@ print("Export format is {}".format(img_format))
 nature = 'sqrt2'
 nature = 'exp'  # 'sqrt2'
 nature = 'pi'
-# nature = 'random'
+nature = '101010'
 
 # Size of the inflate ratio:
 inflate = 5
 # inflate = 5, means they are 5 spaces between dashes.
 
 # Mirror the row/columns
-mirror = False
+mirror = True
 
 # Parralel lines (XXX variant not good rigt now)
 cartesian = True
