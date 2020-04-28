@@ -66,7 +66,7 @@ for i in range(n_trajectories):
         axes[1, 0].set_yticks([])
         if i > 0:
             axes[0, 0].plot(point_to_keep[0], point_to_keep[1], '.',
-                            color='#f95e04', ms=20, alpha=1-j/n_times)
+                            color='#f95e04', ms=20, alpha=1 - j / n_times)
 
         axes[1, 1].plot(trajectories_fast[n_times - 1, 0],
                         trajectories_fast[n_times - 1, 1],
@@ -88,6 +88,8 @@ for i in range(n_trajectories):
 
     if save:
         plt.savefig("gifs/TCL_%s.png" % str(idx_video).zfill(5))
+        plt.savefig("svg/TCL_%s.svg" % str(idx_video).zfill(5))
+
         files = files + ' gifs/TCL_{}.png'.format(str(idx_video).zfill(5))
         idx_video += 1
         print(i)
