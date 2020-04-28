@@ -1,5 +1,5 @@
 # Tweets
-Maths Tweet with Python, Inkscape and Geogebra.
+Maths Tweet with mostly Python and a bit of Inkscape or Geogebra.
 
 Some elements are provided below. More images and animations can be found in the associated directory. 
 
@@ -22,3 +22,11 @@ In this part, simple iterations creating perspective function are investigated. 
 Here, simple traditional geometric constructions from the Islamic world are investigated.
 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/ten_star_color_e.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
+
+
+## [Central Limit Theorem (CLT)](https://github.com/josephsalmon/Tweets/tree/master/CLT)
+
+Here, we investigate visually random walks connections to the CLT:
+
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/CLT/svg/TCL_readme.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/CLT)
+
