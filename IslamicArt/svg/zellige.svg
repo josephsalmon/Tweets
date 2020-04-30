@@ -11,7 +11,7 @@
    width="6.3879261in"
    height="6.3879261in"
    id="svg9933"
-   sodipodi:docname="zelige2_svg.svg"
+   sodipodi:docname="zellige.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <metadata
      id="metadata9937">
@@ -34,16 +34,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1853"
+     inkscape:window-width="927"
      inkscape:window-height="1016"
      id="namedview9935"
      showgrid="false"
-     inkscape:zoom="1.1639951"
-     inkscape:cx="359.70867"
-     inkscape:cy="320.31405"
-     inkscape:window-x="67"
+     inkscape:zoom="0.82306883"
+     inkscape:cx="254.38309"
+     inkscape:cy="353.81626"
+     inkscape:window-x="993"
      inkscape:window-y="27"
-     inkscape:window-maximized="1"
+     inkscape:window-maximized="0"
      inkscape:current-layer="g9929"
      units="in"
      fit-margin-top="0"
@@ -67,86 +67,13 @@
      transform="translate(-72.448678,-184.8437)">
     <g
        id="g9929">
-      <path
-         d="m 445.86803,406.21926 9.223,-3.82029 9.223,3.82029 3.82029,9.223 -3.82029,9.22301 -9.223,3.82029 -9.223,-3.82029 -3.82029,-9.22301 z"
-         id="path9"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 616.35781,406.21926 -9.22301,-3.82029 -9.223,3.82029 -3.82029,9.223 3.82029,9.22301 9.223,3.82029 9.22301,-3.82029 3.82029,-9.22301 z"
-         id="path11"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 445.86803,272.6215 9.223,3.82029 9.223,-3.82029 3.82029,-9.223 -3.82029,-9.223 -9.223,-3.82029 -9.223,3.82029 -3.82029,9.223 z"
-         id="path13"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 616.35781,272.6215 -9.22301,3.82029 -9.223,-3.82029 -3.82029,-9.223 3.82029,-9.223 9.223,-3.82029 9.22301,3.82029 3.82029,9.223 z"
-         id="path15"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 445.86803,576.70904 9.223,3.82029 9.223,-3.82029 3.82029,-9.223 -3.82029,-9.223 -9.223,-3.82029 -9.223,3.82029 -3.82029,9.223 z"
-         id="path17"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 616.35781,576.70904 -9.22301,3.82029 -9.223,-3.82029 -3.82029,-9.223 3.82029,-9.223 9.223,-3.82029 9.22301,3.82029 3.82029,9.223 z"
-         id="path19"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 445.86803,710.30681 9.223,-3.82029 9.223,3.82029 3.82029,9.223 -3.82029,9.22301 -9.223,3.82029 -9.223,-3.82029 -3.82029,-9.22301 z"
-         id="path21"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 616.35781,710.30681 -9.22301,-3.82029 -9.223,3.82029 -3.82029,9.223 3.82029,9.22301 9.223,3.82029 9.22301,-3.82029 3.82029,-9.22301 z"
-         id="path23"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 312.27026,406.21926 -9.223,-3.82029 -9.22301,3.82029 -3.82029,9.223 3.82029,9.22301 9.22301,3.82029 9.223,-3.82029 3.82029,-9.22301 z"
-         id="path25"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 141.78048,406.21926 9.223,-3.82029 9.223,3.82029 3.82029,9.223 -3.82029,9.22301 -9.223,3.82029 -9.223,-3.82029 -3.82029,-9.22301 z"
-         id="path27"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 312.27026,272.6215 -9.223,3.82029 -9.22301,-3.82029 -3.82029,-9.223 3.82029,-9.223 9.22301,-3.82029 9.223,3.82029 3.82029,9.223 z"
-         id="path29"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 141.78048,272.6215 9.223,3.82029 9.223,-3.82029 3.82029,-9.223 -3.82029,-9.223 -9.223,-3.82029 -9.223,3.82029 -3.82029,9.223 z"
-         id="path31"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 312.27026,576.70904 -9.223,3.82029 -9.22301,-3.82029 -3.82029,-9.223 3.82029,-9.223 9.22301,-3.82029 9.223,3.82029 3.82029,9.223 z"
-         id="path33"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 141.78048,576.70904 9.223,3.82029 9.223,-3.82029 3.82029,-9.223 -3.82029,-9.223 -9.223,-3.82029 -9.223,3.82029 -3.82029,9.223 z"
-         id="path35"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 312.27026,710.30681 -9.223,-3.82029 -9.22301,3.82029 -3.82029,9.223 3.82029,9.22301 9.22301,3.82029 9.223,-3.82029 3.82029,-9.22301 z"
-         id="path37"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 141.78048,710.30681 9.223,-3.82029 9.223,3.82029 3.82029,9.223 -3.82029,9.22301 -9.223,3.82029 -9.223,-3.82029 -3.82029,-9.22301 z"
-         id="path39"
-         inkscape:connector-curvature="0"
-         style="fill:#000000;fill-opacity:0.35686275;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers" />
+      <rect
+         style="opacity:1;fill:#fffffc;fill-opacity:1;stroke:none;stroke-width:1.13385832;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         id="rect1964"
+         width="616.84106"
+         height="617.7002"
+         x="70.730461"
+         y="181.24352" />
       <path
          d="m 455.09103,339.42038 15.74465,6.52164"
          stroke-miterlimit="10"
@@ -502,11 +429,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 432.82473,437.70856 -22.26629,9.223"
+         d="m 432.82473,437.70856 -15.74464,-6.52165"
          stroke-miterlimit="10"
          id="path217"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 417.08009,431.18691 6.52164,-15.74465"
          stroke-miterlimit="10"
@@ -976,11 +904,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 629.4011,437.70856 22.26629,9.223"
+         d="m 629.4011,437.70856 15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path375"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="M 645.14575,431.18691 638.6241,415.44226"
          stroke-miterlimit="10"
@@ -1451,11 +1380,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 432.82473,241.1322 -22.26629,-9.223"
+         d="m 432.82473,241.1322 -15.74464,6.52165"
          stroke-miterlimit="10"
          id="path533"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 417.08009,247.65385 6.52164,15.74465"
          stroke-miterlimit="10"
@@ -1829,11 +1759,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 629.4011,241.1322 22.26629,-9.223"
+         d="m 629.4011,241.1322 15.74465,6.52165"
          stroke-miterlimit="10"
          id="path659"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="M 645.14575,247.65385 638.6241,263.3985"
          stroke-miterlimit="10"
@@ -2400,11 +2331,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 432.82473,545.21974 -22.26629,-9.223"
+         d="m 432.82473,545.21974 -15.74464,6.52165"
          stroke-miterlimit="10"
          id="path849"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 417.08009,551.74139 6.52164,15.74465"
          stroke-miterlimit="10"
@@ -2778,11 +2710,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 629.4011,545.21974 22.26629,-9.223"
+         d="m 629.4011,545.21974 15.74465,6.52165"
          stroke-miterlimit="10"
          id="path975"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 645.14575,551.74139 -6.52165,15.74465"
          stroke-miterlimit="10"
@@ -3156,11 +3089,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 432.82473,741.79611 -22.26629,9.223"
+         d="m 432.82473,741.79611 -15.74464,-6.52165"
          stroke-miterlimit="10"
          id="path1101"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 417.08009,735.27446 6.52164,-15.74465"
          stroke-miterlimit="10"
@@ -3534,11 +3468,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 629.4011,741.79611 22.26629,9.223"
+         d="m 629.4011,741.79611 15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path1227"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="M 645.14575,735.27446 638.6241,719.52981"
          stroke-miterlimit="10"
@@ -4297,11 +4232,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 325.31355,437.70856 22.2663,9.223"
+         d="m 325.31355,437.70856 15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path1481"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 341.0582,431.18691 -6.52165,-15.74465"
          stroke-miterlimit="10"
@@ -4675,11 +4611,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 128.73719,437.70856 -22.2663,9.223"
+         d="m 128.73719,437.70856 -15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path1607"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 112.99254,431.18691 6.52164,-15.74465"
          stroke-miterlimit="10"
@@ -5047,11 +4984,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 325.31355,241.1322 22.2663,-9.223"
+         d="m 325.31355,241.1322 15.74465,6.52165"
          stroke-miterlimit="10"
          id="path1733"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 341.0582,247.65385 -6.52165,15.74465"
          stroke-miterlimit="10"
@@ -5425,11 +5363,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 128.73719,241.1322 -22.2663,-9.223"
+         d="m 128.73719,241.1322 -17.25457,7.17903"
          stroke-miterlimit="10"
          id="path1859"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 112.99254,247.65385 6.52164,15.74465"
          stroke-miterlimit="10"
@@ -5797,11 +5736,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 325.31355,545.21974 22.2663,-9.223"
+         d="m 325.31355,545.21974 15.74465,6.52165"
          stroke-miterlimit="10"
          id="path1985"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 341.0582,551.74139 -6.52165,15.74465"
          stroke-miterlimit="10"
@@ -6175,11 +6115,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 128.73719,545.21974 -22.2663,-9.223"
+         d="m 128.73719,545.21974 -15.74465,6.52165"
          stroke-miterlimit="10"
          id="path2111"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 112.99254,551.74139 6.52164,15.74465"
          stroke-miterlimit="10"
@@ -6553,11 +6494,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 325.31355,741.79611 22.2663,9.223"
+         d="m 325.31355,741.79611 15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path2237"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 341.0582,735.27446 -6.52165,-15.74465"
          stroke-miterlimit="10"
@@ -6931,11 +6873,12 @@
          inkscape:connector-curvature="0"
          style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
       <path
-         d="m 128.73719,741.79611 -22.2663,9.223"
+         d="m 128.73719,741.79611 -15.74465,-6.52165"
          stroke-miterlimit="10"
          id="path2363"
          inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
+         style="fill:none;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+         sodipodi:nodetypes="cc" />
       <path
          d="m 112.99254,735.27446 6.52164,-15.74465"
          stroke-miterlimit="10"

@@ -19,11 +19,13 @@ In this part, simple iterations creating perspective function are investigated. 
 
 ##  [IslamicArt](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
 
-Here, simple traditional geometric constructions from the Islamic world are investigated.
+Here, simple traditional geometric constructions from the Islamic world are investigated (stars, zelllige, etc.):
 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/ten_star_color_e.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
 
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/zelige.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/zellige.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
+
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/zellige_color.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt)
 
 
 ## [Central Limit Theorem (CLT)](https://github.com/josephsalmon/Tweets/tree/master/CLT)
