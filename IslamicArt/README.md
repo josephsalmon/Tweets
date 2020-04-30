@@ -12,7 +12,8 @@ https://arbitrarilyclose.com/ an
 Inspired by https://www.youtube.com/watch?v=hG0SuseRYds
 
 <p float="left">
-<img src="svg/zelige.svg?sanitize=true" width="300">
+<img src="svg/zellige.svg?sanitize=true" width="300">
+<img src="svg/zellige_color.svg?sanitize=true" width="300">
 </p>
 
 - Stars: Black and white version
