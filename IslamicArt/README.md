@@ -6,10 +6,9 @@ https://arbitrarilyclose.com/ an
 
 - Zelige (geogebra + inkscape)
 
-[zellige.svg](svg/zellige.svg), 
-[zellige_color.svg](svg/zellige_color.svg), 
-[zelige.ggb](geogebra-export_zelige.ggb), 
-Inspired by https://www.youtube.com/watch?v=hG0SuseRYds
+[zellige.svg](svg/zellige.svg), [zellige.pdf](svg/zellige.pdf), 
+[zellige_color.svg](svg/zellige_color.svg), [zellige_color.pdf](svg/zellige_color.pdf), 
+[zelige.ggb](geogebra-export_zelige.ggb). Creations inspired by https://www.youtube.com/watch?v=hG0SuseRYds.
 
 <p float="left">
 <img src="svg/zellige.svg?sanitize=true" width="300">
