@@ -15,6 +15,16 @@ https://arbitrarilyclose.com/ an
 <img src="svg/zellige_color.svg?sanitize=true" width="300">
 </p>
 
+- Persian variations: design of the Sheikh Lotfallah Mosque in Ispahan, Iran (inspired by https://design.tutsplus.com/tutorials/geometric-design-the-lotfallah-mosque-dome--cms-24859)
+
+[Lotfallah_colored.png](png/Lotfallah_colored.png), [Lotfallah_colored.pdf](pdf/Lotfallah_colored.pdf),
+[Lotfallah_colored.svg](svg/Lotfallah_colored.svg), 
+
+<p float="left">
+<img src="svg/Lotfallah_colored.svg?sanitize=true" width="300">
+</p>
+
+
 - Stars: Black and white version
 
 [ten_star.png](png/ten_star.png), [ten_star.pdf](pdf/ten_star.pdf),
