@@ -17,10 +17,15 @@ https://arbitrarilyclose.com/ an
 
 - Persian variations: design of the Sheikh Lotfallah Mosque in Ispahan, Iran (inspired by https://design.tutsplus.com/tutorials/geometric-design-the-lotfallah-mosque-dome--cms-24859)
 
-[Lotfallah_colored.png](png/Lotfallah_colored.png), [Lotfallah_colored.pdf](pdf/Lotfallah_colored.pdf),
-[Lotfallah_colored.svg](svg/Lotfallah_colored.svg), 
+[Lotfallah_colored.pdf](pdf/Lotfallah_colored.pdf),
+[Lotfallah_colored.svg](svg/Lotfallah_colored.svg),
+[Lotfallah_nb.pdf](pdf/Lotfallah_nb.pdf),
+[Lotfallah_nb.svg](svg/Lotfallah_nb.svg), 
+
+
 
 <p float="left">
+<img src="svg/Lotfallah_nb.svg?sanitize=true" width="300">
 <img src="svg/Lotfallah_colored.svg?sanitize=true" width="300">
 </p>
 

@@ -25,6 +25,7 @@ Here, simple traditional geometric constructions from the Islamic world are inve
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/zellige.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/zellige_color.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/Lotfallah_colored.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/Lotfallah_nb.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
 
 
 ## [Central Limit Theorem (CLT)](https://github.com/josephsalmon/Tweets/tree/master/CLT)
