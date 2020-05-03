@@ -1,0 +1,8 @@
+python-igraph==0.8.0
+matplotlib==3.2.1
+seaborn==0.10.0
+numpy==1.18.2
+sklearn==0.0
+scikit-image==0.16.2
+mpmath==1.1.0
+pycairo==1.19.1
