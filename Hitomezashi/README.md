@@ -34,61 +34,18 @@ The little dash as drawn as follows:
 - If the i-th digit is a 1, start the i-th row by a dash, then a blank, then a dash, then etc.
 - If the i-th digit is a 0, start the i-th row by a blank, then a blank, then a dash, then etc.
 
-The provided code proposes as "seeds" sequences from either: a random sequence (default) or the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}">:
+The provided code proposes various "seeds", i.e.,  sequences to start the process:
 
-- `random` :
-[hitomezashi_random_50.png](png/hitomezashi_random_50.png), [hitomezashi_random_50.pdf](pdf/hitomezashi_random_50.pdf)
-<img src="png/hitomezashi_random_50.png" width="400" height="400">
-
-- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
-[hitomezashi_exp_50.png](png/hitomezashi_exp_50.png),
-[hitomezashi_exp_50.pdf](pdf/hitomezashi_exp_50.pdf),
-
-<img src="png/hitomezashi_exp_50.png" width="400" height="400">
-
-- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
-
-<img src="png/hitomezashi_pi_50.png" width="400" height="400">
-
-- `sqrt2` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_pi_50.png](png/hitomezashi_pi_50.png), [hitomezashi_pi_50.pdf](pdf/hitomezashi_pi_50.pdf)
-
-<img src="png/hitomezashi_sqrt2_50.png" width="400" height="400">
+- a random sequence (default)
+- the parity of the fractional part of a real number (in the list  <img src="https://render.githubusercontent.com/render/math?math=\exp(1), \pi, \sqrt{2}"> etc.).
 
 
-If you prefer colorized version you can play with the colormaps to change the rendering:
 
+Type | Black and white             |  Colored | Symmetrized + colored
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+`random` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_random_150_nq015.svg?sanitize=true" width="300" > | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="300" > | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_Blues_random_150_nq30.svg?sanitize=true" width="300">
+`exp` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_exp_150_nq015.svg?sanitize=true" width="300" >  |<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="300"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="300">
+`pi` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_pi_150_nq015.svg?sanitize=true" width="300" >  |<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="300"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="300">
+`sqrt2` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_sqrt2_150_nq015.svg?sanitize=true" width="300" >  |<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="300"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="300">
+`10101` | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_101010_150_nq015.svg?sanitize=true" width="300" >  |<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_shifted_101010_150_nq015.svg?sanitize=true" width="300"> | <img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_101010_150_nq015.svg?sanitize=true" width="300">
 
-- `random` :
-[hitomezashi_cmap_Blues_random_150_nq30.png](png/hitomezashi_cmap_Blues_random_150_nq30.png), [hitomezashi_cmap_Blues_random_150_nq30.pdf](pdf/hitomezashi_cmap_Blues_random_150_nq30.pdf),
-[hitomezashi_cmap_Blues_random_150_nq30.svg](svg/hitomezashi_cmap_Blues_random_150_nq30.svg), with 
-
-<p float="left">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_Blues_random_150_nq30.svg?sanitize=true" width="400" height="400">
-</p>
-
-- `exp` corresponds to <img src="https://render.githubusercontent.com/render/math?math=e=\exp(1)">:
-[hitomezashi_cmap_RdBu_exp_150_nq30.png](png/hitomezashi_cmap_RdBu_exp_150_nq30.png),
-[hitomezashi_cmap_RdBu_exp_150_nq30.pdf](pdf/hitomezashi_cmap_RdBu_exp_150_nq30.pdf),
-[hitomezashi_cmap_RdBu_exp_150_nq30.svg](svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg), (wit or without mirroring)
-
-<p float="left">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" width="400" height="400">
-</p>
-
-- `pi` corresponds to <img src="https://render.githubusercontent.com/render/math?math=\pi">: [hitomezashi_cmap_viridis_pi_150_nq30.png](png/hitomezashi_cmap_viridis_pi_150_nq30.png), [hitomezashi_cmap_viridis_pi_150_nq30.pdf](pdf/hitomezashi_cmap_viridis_pi_150_nq30.pdf),
-[hitomezashi_cmap_viridis_pi_150_nq30.svg](svg/hitomezashi_cmap_viridis_pi_150_nq30.svg), (wit or without mirroring)
-
-<p float="left">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" width="400" height="400">
-</p>
-
-- `sqrt2` corresponds to<img src="https://render.githubusercontent.com/render/math?math=\sqrt{2}">: [hitomezashi_cmap_twilight_sqrt2_150_nq30.png](png/hitomezashi_cmap_twilight_sqrt2_150_nq30.png), [hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf](pdf/hitomezashi_cmap_twilight_sqrt2_150_nq30.pdf),
-[hitomezashi_cmap_twilight_sqrt2_150_nq30.svg](svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg), (wit or without mirroring)
-
-<p float="left">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
-<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" width="400" height="400">
-</p>

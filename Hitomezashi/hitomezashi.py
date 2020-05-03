@@ -21,7 +21,13 @@ def make_hitomezashi(n_digit=150, nature="cartesian", inflate=5,
     r = np.random.RandomState(seed)
     print('Type : {}'.format(nature))
     # Note: the " / 10 " below (and the i+2) is to avoid "." issues
-    if nature is "exp":
+    if nature is "101010":
+        a = np.zeros(n_digit + 3, dtype=int)
+        a[::2] = 1
+        offset_row_str_int = np.array2string(a,
+                                             max_line_width=n_digit + 10,
+                                             separator='')
+    elif nature is "exp":
         offset_row_str_int = (nstr(exp(1) / 10, n=n_digit + 3))
     elif nature is "sqrt2":
         offset_row_str_int = (nstr(sqrt(2) / 10, n=n_digit + 3))
@@ -32,6 +38,7 @@ def make_hitomezashi(n_digit=150, nature="cartesian", inflate=5,
                                              size=n_digit + 3),
                                              max_line_width=n_digit + 10,
                                              separator='')
+    print(offset_row_str_int)
     offset_row_str_int = offset_row_str_int[1:-1]
     offset_row_str = offset_row_str_int[2:]
 
