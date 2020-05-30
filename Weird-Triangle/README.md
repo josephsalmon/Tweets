@@ -5,14 +5,14 @@ Some inspiration are coming from Annie Perkins: hhttps://twitter.com/anniek_p/st
 
 - Colors:
 <p float="left">
-<img src="svg/Weird-Triangle_simple.svg?sanitize=true" width="300">
-<img src="svg/Weird-Triangle.svg?sanitize=true" width="300">
+<img src="svg/Weird-Triangle_simple.svg?sanitize=true" height="200">
+<img src="svg/Weird-Triangle.svg?sanitize=true" height="200">
 </p>
 
 
 - Black and white version
 
-<img src="pdf/Weird-Triangle_simple_nb.svg?sanitize=true" width="300">
-<img src="svg/Weird-Triangles_nb.svg?sanitize=true" width="300">
+<img src="svg/Weird-Triangle_simple_nb.svg?sanitize=true" height="200">
+<img src="svg/Weird-Triangles_nb.svg?sanitize=true" height="200">
 
 [Weird-Triangles_nb.png](pdf/Weird-Triangle_simple_nb.pdf), [Weird-Triangle.ggb](ggb/Weird-Triangle.ggb)
