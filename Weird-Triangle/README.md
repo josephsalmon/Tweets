@@ -11,8 +11,9 @@ Some inspiration are coming from Annie Perkins: hhttps://twitter.com/anniek_p/st
 
 
 - Black and white version
-
+<p float="left">
 <img src="svg/Weird-Triangle_simple_nb.svg?sanitize=true" height="200">
 <img src="svg/Weird-Triangles_nb.svg?sanitize=true" height="200">
+</p>
 
 [Weird-Triangles_nb.png](pdf/Weird-Triangle_simple_nb.pdf), [Weird-Triangle.ggb](ggb/Weird-Triangle.ggb)
