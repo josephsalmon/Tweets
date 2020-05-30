@@ -21,7 +21,7 @@ In this part, simple iterations creating perspective function are investigated. 
 
 ##  [Penrose Triangle](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/tWeird-Triangle_simple.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle_simple.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle_simple_nb.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 
