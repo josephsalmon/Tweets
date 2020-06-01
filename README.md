@@ -10,7 +10,11 @@ Some elements are provided below. More images and animations can be found in the
 Hitomezashis are (numerical) decorative reinforcement stitching inspired by Japanese tradition.
 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_viridis_pi_150_nq30.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_cmap_twilight_sqrt2_150_nq30.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md)
 
+
+ 	
 
 ## [Spline-ish](https://github.com/josephsalmon/Tweets/tree/master/Spline-ish/README.md)
 
@@ -24,6 +28,7 @@ In this part, simple iterations creating perspective function are investigated. 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle_simple.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangle_simple_nb.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
+
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Weird-Triangle/svg/Weird-Triangles_nb.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Weird-Triangle/README.md)
 
 ##  [IslamicArt](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
