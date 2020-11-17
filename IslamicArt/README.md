@@ -51,3 +51,12 @@ https://arbitrarilyclose.com/ an
 <img src="svg/ten_star_color_d.svg" width="300">
 <img src="svg/ten_star_color_e.svg" width="300">
 </p>
+
+- Celtic (knots) art (Arabic cousins?):
+
+(inspired by https://design.tutsplus.com/tutorials/geometric-design-knots-and-weaves--cms-23968)
+
+<p float="left">
+<img src="svg/Celting_knot_init.svg" width="300">
+<img src="svg/Celting_knot_color.svg" width="300">
+</p>
