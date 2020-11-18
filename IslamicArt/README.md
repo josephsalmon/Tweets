@@ -60,3 +60,4 @@ https://arbitrarilyclose.com/ an
 <img src="svg/Celting_knot_init.svg" width="300">
 <img src="svg/Celting_knot_color.svg" width="300">
 </p>
+The geogebra file is available here: [Celting_knot_init.ggb](ggb/Celting_knot_init.ggb)
