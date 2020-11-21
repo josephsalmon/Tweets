@@ -68,7 +68,7 @@ The geogebra file is available here:
 - Triskel art :
 
 <p float="left">
-<img src="gif/Triskel_variation.gif" width="300">
+<img src="gif/Triskel_variation.gif" width="500">
 </p>
 
 The geogebra file is available here: 
