@@ -62,4 +62,14 @@ https://arbitrarilyclose.com/ an
 </p>
 
 The geogebra file is available here: 
-[Celting_knot_init.ggb](ggb/Celting_knot_init.ggb)
+[Celting_knot_init.ggb](ggb/Celting_knot_init.ggb).
+
+
+- Triskel art :
+
+<p float="left">
+<img src="gif/Triskel_variation.gif" width="300">
+</p>
+
+The geogebra file is available here: 
+[Triskel.ggb](ggb/Triskel.ggb).
