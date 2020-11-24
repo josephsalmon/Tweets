@@ -18,17 +18,11 @@ https://arbitrarilyclose.com/ an
 - Persian variations: variation on the Sultan Uljaytu's Frontispiece (inspired by https://www.instagram.com/tv/B_E4GhGgOi5/?igshid=rtzfgvl9m5b0)
 
 [Sultan_Uljaytu_Frontispiece.svg](svg/Sultan_Uljaytu_Frontispiece.svg), 
-[Sultan_Uljaytu_Frontispiece_colored.pdf](pdf/Sultan_Uljaytu_Frontispiece_colored.pdf),
 [Sultan_Uljaytu_Frontispiece_colored.svg](svg/Sultan_Uljaytu_Frontispiece_colored.svg),
-[Lotfallah_arabesque.svg](svg/Lotfallah_arabesque.svg), 
-[Lotfallah_arabesque.pdf](pdf/Lotfallah_arabesque.pdf),
-[Lotfallah.ggb](ggb/Lotfallah.ggb),
-
 
 <p float="left">
-<img src="svg/Lotfallah_nb.svg?sanitize=true" width="300">
-<img src="svg/Lotfallah_colored.svg?sanitize=true" width="300">
-<img src="svg/Lotfallah_arabesque.svg?sanitize=true" width="300">
+<img src="svg/Sultan_Uljaytu_Frontispiece.svg?sanitize=true" width="300">
+<img src="svg/Sultan_Uljaytu_Frontispiece_colored.svg?sanitize=true" width="300">
 </p>
 
 
