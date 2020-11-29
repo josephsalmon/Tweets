@@ -91,6 +91,6 @@ def animate(i):
 
 
 anim = animation.FuncAnimation(fig, animate, frames=n_frames,
-                               interval=8, blit=True)
-anim.save('sismograph_sinus.mp4', fps=80)
+                               interval=2, blit=True)
+anim.save('sismograph_sinus.mp4', fps=100)
 plt.show()
