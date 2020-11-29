@@ -6,8 +6,8 @@ from matplotlib import animation
 
 n_polygons = 4
 height = n_polygons * 2
-n_discr = 300
-n_lap = 3
+n_discr = 200
+n_lap = 2
 n_frames = n_discr * n_lap
 
 x = np.linspace(0, n_lap * 2 * np.pi, n_frames)
