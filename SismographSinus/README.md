@@ -12,9 +12,9 @@ Note: the convertion to gif can be done following:
 https://dev.to/halivert/convert-mp4-to-gif-3idd
 
 ```
-ffmpeg -i sismograph_sinus.mp4 -vf fps=5 frames/%03d.png
+ffmpeg -i sismograph_sinus.mp4 -vf fps=12 frames/%03d.png
 
-convert frames/* output.gif
+convert frames/* sismograph_sinus.gif
 
 ```
 
