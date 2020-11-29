@@ -3,6 +3,6 @@
 Here I provide some code to solve the last exam question of my course HLMA310.
 This is inspired and adapted from reading (https://1ucasvb.tumblr.com/post/42906053623/in-a-previous-post-i-showed-how-to-geometrically).
 
-<img src="sismograph_sinus.gif" width="300">
+<img src="sismograph_sinus.gif" width="500">
 
 The code is in Python: [sismograph_sinus.py](sismograph_sinus.py) and produces an mp4 image ([sismograph_sinus.mp4](sismograph_sinus.mp4)) , and a gif could also be obtained with ffmpeg ([sismograph_sinus.gif](sismograph_sinus.gif)). 
