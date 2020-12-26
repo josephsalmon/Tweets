@@ -52,7 +52,6 @@ Here, we investigate visually random walks connections to the CLT:
 Here I provide some visualization for linear regression.
 
 [<img src="LinearRegression/images/Successive_regression_movie.png?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
-
 [<img src="LinearRegression/images/Successive_regression_movie.gif?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
 
 
