@@ -47,6 +47,15 @@ Here, we investigate visually random walks connections to the CLT:
 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/CLT/svg/TCL_readme.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/CLT/README.md)
 
+## [Linear Regression](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression)
+
+Here I provide some visualization for linear regression.
+
+[<img src="LinearRegression/images/Successive_regression_movie.png?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
+
+[<img src="LinearRegression/images/Successive_regression_movie.gif?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
+
+
 ### Docker
 
 You can run the programs using a Docker container. In this example just replace the paths according to your setup :
