@@ -43,8 +43,8 @@ def polygon_complex(n, center, radius):
     rot = 1
     if n == 1:
         return [center]
-    if n==2:
-        rot = cmath.exp(1j * np.pi / 2)
+    # if n==2:
+        # rot = cmath.exp(1j * np.pi / 2)
     # elif n == 4:
     #     rot = cmath.exp(4*1j * np.pi / 8)
     return [center + rot * radius * cmath.exp(1j * 2 * np.pi * i / n) for i in range(n)]
@@ -109,47 +109,61 @@ def plot_points(points, ax, color='k', ms=20, alpha=1):
         ax.plot(x1, y1, 'o', color=color, ms=ms, alpha=alpha)
 
 
-def factor_to_points(primes, radius=1):
-    if len(primes) <= 1:
-        points = polygon_complex(primes[0], 0, radius)
+def factor_to_points(primes, radius=1, epsilon=0.1):
+    n_k = primes[-1]
+    if n_k == 1:
+        return [0]
+    if n_k == 2:
+        return polygon_complex(2, 0, (0.3) * radius)
+    alpha_outer = 1/2  # (n_k-1) / (n_k)
+    if n_k % 2 == 0:
+        alpha_inner = (1 - epsilon ) * radius  #/ (n_k+1) / (n_k))
+        center = 0
     else:
-        n_k = primes[-1]
-        alpha_outer = 1  # (n_k-1) / (n_k)
-        alpha_inner = 0.5  # 1 / 2  # (n_k-2) / (n_k-1)
+        delta = np.abs(np.cos(n_k//2 * 2 * np.pi / n_k))
+        print(delta)
+        alpha_inner = 2 * radius / (2 * epsilon + 1 + delta)  #/ (n_k+1) / (n_k))
+        center = -(1 - delta) * alpha_inner/2 #-radius / 2 * (1- delta) #delta/2 #- (1 - np.cos( n_k//2 *2 * np.pi / n_k))
+    if len(primes) <= 1:
+        points = polygon_complex(n_k, center, alpha_inner*radius)
+        # if p == 1:
+        #     return points
+    else:
         points_intermed = polygon_complex(n_k, 0, radius)
-        smaller = factor_to_points(primes[:-1], radius=radius)
+        smaller = factor_to_points(primes[:-1], radius=radius * alpha_inner)
         points = []
         # points_intermed = [pt for pt in points_intermed]
-        # if primes[0] == 2:
-            # alpha_inner *= 1.6
+
         for point in smaller:
-            points.extend([alpha_outer * s + alpha_outer * s * point * alpha_inner for s in points_intermed])
+            points.extend([ center + s * alpha_outer +  s * point * alpha_outer for s in points_intermed])
         # Normalize 
     output = np.array(points)
-    output = output / np.max(np.abs(output))
-    return output
+    output = 1/(1+epsilon) * output / np.max(np.abs(output))
+    return points
 
 # %%
 
-number = 9
+
+
+
+# %%
+number = 3
 primes = primeFactorList(number)
-print(primes)
-
-
-# %%
+radius = 1
+epsilon = 0.2
 fig, ax = plt.subplots(1, 1,
                        figsize=(1, 1),
                        constrained_layout=True)
-plot_points(factor_to_points(primes), ax=ax, ms=1)
+plot_points(factor_to_points(primes, epsilon=epsilon), ax=ax, ms=1)
 ax.set_xticks([])
 ax.set_yticks([])
-radius = 1.2
 ax.set_xlim([-radius, radius])
 ax.set_ylim([-radius, radius])
-
+print(primes)
+print(factor_to_points(primes, epsilon=epsilon))
 # %%
 ncol = 10
-nrow = 2
+nrow = 10
 
 
 fig, ax = plt.subplots(nrow, ncol,
@@ -166,10 +180,11 @@ for i in range(nrow):
         ax[i, j].set_ylim([-radius, radius])
         ax[i, j].set_xticks([])
         ax[i, j].set_yticks([])
+        ax[i, j].grid(False)
         # print(number)
         primes = primeFactorList(number)
 
-        plot_points(factor_to_points(primes), ax=ax[i, j], ms=1)
+        plot_points(factor_to_points(primes, epsilon=epsilon), ax=ax[i, j], ms=1)
         # make(ax[i, j], n_tot, radius * 0.9)
 fig.tight_layout()
 plt.show()
@@ -187,7 +202,7 @@ ax.set_yticks([])
 radius = 5
 ax.set_xlim([-radius, radius])
 ax.set_ylim([-radius, radius])
-# %%
+
 
 # %%
 
