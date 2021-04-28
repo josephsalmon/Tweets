@@ -41,13 +41,13 @@ def polygon_complex(n):
     return np.exp(1j * 2 * np.pi * np.arange(n) / n)
 
 
-def factor_to_points(primes, alpha_2=0.95,):
+def factor_to_points(primes, alpha_2=1.03):
     n_k = primes[-1]
     if n_k == 1:
-        return [0]
+        return np.zeros(1)
     if n_k == 2:
         return polygon_complex(2) * alpha_2
-    alpha_outer = 0.99 * 1 / (n_k-1)
+    alpha_outer = 0.99 * 1 / (n_k-1.4)
     if len(primes) <= 1:
         points = polygon_complex(n_k)
     else:
@@ -58,23 +58,12 @@ def factor_to_points(primes, alpha_2=0.95,):
 
 
 # %%
-number = 3
-primes = primeFactorList(number)
 radius = 1
+number = 3
 epsilon = 0.2
-fig, ax = plt.subplots(1, 1,
-                       figsize=(1, 1),
-                       constrained_layout=True)
-plot_points(factor_to_points(primes), ax=ax, ms=1)
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_xlim([-radius, radius])
-ax.set_ylim([-radius, radius])
-print(primes)
-print(factor_to_points(primes))
 # %%
-ncol = 8
-nrow = 12
+ncol = 9
+nrow = 13
 
 
 fig, ax = plt.subplots(nrow, ncol,
@@ -96,10 +85,12 @@ for i in range(nrow):
         # print(number)
         primes = primeFactorList(number)
         points = factor_to_points(primes)
-        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(1 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
+        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(1.5 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
 fig.tight_layout()
 plt.show()
 fig.savefig("test_" + str(nrow) + "_" + str(ncol) + ".svg")
+
+# %%
 
 # %%
 
