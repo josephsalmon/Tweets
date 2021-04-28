@@ -114,16 +114,21 @@ def factor_to_points(primes, radius=1):
         points = polygon_complex(primes[0], 0, radius)
     else:
         n_k = primes[-1]
-        alpha_outer = 2 / 3 #(n_k-1) / (n_k)
-        alpha_inner = 1 / 3 #(n_k-2) / (n_k-1)
-
-        points_intermed = polygon_complex(n_k, 0, alpha_outer * radius)
-        smaller = factor_to_points(primes[:-1], radius=radius * alpha_inner)
+        alpha_outer = 1  # (n_k-1) / (n_k)
+        alpha_inner = 0.5  # 1 / 2  # (n_k-2) / (n_k-1)
+        points_intermed = polygon_complex(n_k, 0, radius)
+        smaller = factor_to_points(primes[:-1], radius=radius)
         points = []
         # points_intermed = [pt for pt in points_intermed]
+        # if primes[0] == 2:
+            # alpha_inner *= 1.6
         for point in smaller:
-            points.extend([s + s * point for s in points_intermed])
-    return points
+            points.extend([alpha_outer * s + alpha_outer * s * point * alpha_inner for s in points_intermed])
+        # Normalize 
+    output = np.array(points)
+    output = output / np.max(np.abs(output))
+    return output
+
 # %%
 
 number = 9
@@ -138,30 +143,30 @@ fig, ax = plt.subplots(1, 1,
 plot_points(factor_to_points(primes), ax=ax, ms=1)
 ax.set_xticks([])
 ax.set_yticks([])
-radius = 1.1
+radius = 1.2
 ax.set_xlim([-radius, radius])
 ax.set_ylim([-radius, radius])
 
 # %%
-ncol = 8
-nrow = 4
+ncol = 10
+nrow = 2
 
 
 fig, ax = plt.subplots(nrow, ncol,
                        figsize=(ncol+1, nrow+1),
                        constrained_layout=True)
 
+# radius = 5
 for i in range(nrow):
     for j in range(ncol):
         number = i * ncol + j + 1
         ax[i, j].set_title(str(number), fontsize=7, horizontalalignment='left', loc='left')
         ax[i, j].set_aspect('equal', 'box')
-        radius = 1.1
         ax[i, j].set_xlim([-radius, radius])
         ax[i, j].set_ylim([-radius, radius])
         ax[i, j].set_xticks([])
         ax[i, j].set_yticks([])
-        print(number)
+        # print(number)
         primes = primeFactorList(number)
 
         plot_points(factor_to_points(primes), ax=ax[i, j], ms=1)
@@ -179,7 +184,7 @@ make(ax, number, 1, alpha=0.95)
 # plot_points(factor_to_points(primes), ax=ax, ms=1)
 ax.set_xticks([])
 ax.set_yticks([])
-radius = 1.1
+radius = 5
 ax.set_xlim([-radius, radius])
 ax.set_ylim([-radius, radius])
 # %%
