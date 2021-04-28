@@ -88,7 +88,7 @@ for i in range(nrow):
         ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(1.5 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
 fig.tight_layout()
 plt.show()
-fig.savefig("test_" + str(nrow) + "_" + str(ncol) + ".svg")
+fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + ".svg")
 
 # %%
 
