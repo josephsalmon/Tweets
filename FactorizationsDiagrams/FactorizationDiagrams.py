@@ -114,7 +114,7 @@ def factor_to_points(primes, radius=1, epsilon=0.1):
     if n_k == 1:
         return [0]
     if n_k == 2:
-        return polygon_complex(2, 0, (0.3) * radius)
+        return polygon_complex(2, 0, (0.35) * radius)
     alpha_outer = 1/2  # (n_k-1) / (n_k)
     if n_k % 2 == 0:
         alpha_inner = (1 - epsilon ) * radius  #/ (n_k+1) / (n_k))
@@ -176,15 +176,15 @@ for i in range(nrow):
         number = i * ncol + j + 1
         ax[i, j].set_title(str(number), fontsize=7, horizontalalignment='left', loc='left')
         ax[i, j].set_aspect('equal', 'box')
-        ax[i, j].set_xlim([-radius, radius])
-        ax[i, j].set_ylim([-radius, radius])
+        ax[i, j].set_xlim([-radius * (1+epsilon), radius* (1+epsilon)])
+        ax[i, j].set_ylim([-radius* (1+epsilon), radius* (1+epsilon)])
         ax[i, j].set_xticks([])
         ax[i, j].set_yticks([])
-        ax[i, j].grid(False)
+        ax[i, j].set_axis_off()
         # print(number)
         primes = primeFactorList(number)
 
-        plot_points(factor_to_points(primes, epsilon=epsilon), ax=ax[i, j], ms=1)
+        plot_points(factor_to_points(primes, epsilon=epsilon), ax=ax[i, j], ms=1 / number**0.5 * (ncol * nrow)**0.5)
         # make(ax[i, j], n_tot, radius * 0.9)
 fig.tight_layout()
 plt.show()
@@ -192,16 +192,16 @@ fig.savefig("test_" + str(nrow) + "_" + str(ncol) + ".svg")
 # %%
 
 # %%
-fig, ax = plt.subplots(1, 1,
-                       figsize=(1, 1),
-                       constrained_layout=True)
-make(ax, number, 1, alpha=0.95)
-# plot_points(factor_to_points(primes), ax=ax, ms=1)
-ax.set_xticks([])
-ax.set_yticks([])
-radius = 5
-ax.set_xlim([-radius, radius])
-ax.set_ylim([-radius, radius])
+# fig, ax = plt.subplots(1, 1,
+#                        figsize=(1, 1),
+#                        constrained_layout=True)
+# make(ax, number, 1, alpha=0.95)
+# # plot_points(factor_to_points(primes), ax=ax, ms=1)
+# ax.set_xticks([])
+# ax.set_yticks([])
+# radius = 5
+# ax.set_xlim([-radius, radius])
+# ax.set_ylim([-radius, radius])
 
 
 # %%
