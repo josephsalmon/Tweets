@@ -1,4 +1,4 @@
-# Spline-ish
+# Factorization diagrams
 
 Here I provide some Python code for the numerical creation of factorization diagrams.
 Some inspiration are coming from Brent Yorgey: <https://mathlesstraveled.com/2012/10/05/factorization-diagrams/>.
