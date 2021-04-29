@@ -62,8 +62,8 @@ radius = 1
 number = 3
 epsilon = 0.2
 # %%
-ncol = 9
-nrow = 13
+ncol = 10
+nrow = 10
 
 
 fig, ax = plt.subplots(nrow, ncol,
@@ -85,7 +85,7 @@ for i in range(nrow):
         # print(number)
         primes = primeFactorList(number)
         points = factor_to_points(primes)
-        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(1.5 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
+        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(3 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
 fig.tight_layout()
 plt.show()
 fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + ".svg")
