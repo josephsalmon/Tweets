@@ -41,8 +41,12 @@ def polygon_complex(n):
     return np.exp(1j * 2 * np.pi * np.arange(n) / n)
 
 
-def factor_to_points(primes, alpha_2=1.03):
+def factor_to_points(primes, alpha_2=1.03, spiral=False):
     n_k = primes[-1]
+    if spiral:
+        rot = np.exp(1j * (n_k//2) * 2 * np.pi / n_k)
+    else:
+        rot = 1
     if n_k == 1:
         return np.zeros(1)
     if n_k == 2:
@@ -53,7 +57,7 @@ def factor_to_points(primes, alpha_2=1.03):
     else:
         points_intermed = polygon_complex(n_k)
         smaller = factor_to_points(primes[:-1])
-        points = np.kron(points_intermed, (1 + smaller * alpha_outer))
+        points = np.kron(points_intermed, (1 + smaller * alpha_outer) + rot)
     return points / np.max(np.abs(points))
 
 
@@ -65,7 +69,7 @@ epsilon = 0.2
 ncol = 10
 nrow = 10
 
-
+spiral = True
 fig, ax = plt.subplots(nrow, ncol,
                        figsize=(ncol+1, nrow+1),
                        constrained_layout=True)
@@ -84,11 +88,12 @@ for i in range(nrow):
         ax[i, j].set_axis_off()
         # print(number)
         primes = primeFactorList(number)
-        points = factor_to_points(primes)
+        points = factor_to_points(primes, spiral=spiral)
         ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(3 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
 fig.tight_layout()
 plt.show()
-fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + ".svg")
+
+fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + "spiral"+ str(spiral) + ".svg")
 
 # %%
 
