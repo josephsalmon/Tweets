@@ -1,6 +1,6 @@
 # Public civil servant and inflation in France
 
-Here we investigated the evolution of the salary of public civil servant in France through the "Point d'indice" evolution.
+In the file [fonctionnaires_pauvres.py](fonctionnaires_pauvres.py) we investigated the evolution of the salary of public civil servant in France through the "Point d'indice" evolution.
 
 Sources are:
 - inflation : [https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement](https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement)
