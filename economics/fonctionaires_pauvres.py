@@ -76,6 +76,11 @@ df.plot(x="Date", y=["IPC(idx)", "Point d'indice(idx)"])
 ax = plt.gca()
 ax.set_xlim(left=np.datetime64(init_date))
 ax.set_ylim(bottom=0.9)
+fig = ax.get_figure()
+fig.savefig("./svg/ipc_n_point_indice.svg")
+fig.savefig("./png/ipc_n_point_indice.png")
+
+plt.close("all")
 # %%
 
 df.plot(
@@ -88,6 +93,8 @@ ax = plt.gca()
 ax.set_xlim(left=np.datetime64(init_date))
 ax.set_ylim(bottom=0.80, top=1.2)
 ax.legend().remove()
-
+fig = ax.get_figure()
+fig.savefig("./svg/point_indice.svg")
+fig.savefig("./png/point_indice.png")
 
 # %%
