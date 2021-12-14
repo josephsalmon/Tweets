@@ -7,7 +7,9 @@ import numpy as np
 import matplotlib.pylab as plt
 from functools import partial
 import cmath
+
 # %%
+
 
 def smallestFactor(n):
     if (n < 2):
@@ -41,10 +43,10 @@ def polygon_complex(n):
     return np.exp(1j * 2 * np.pi * np.arange(n) / n)
 
 
-def factor_to_points(primes, alpha_2=1.03, spiral=False):
+def factor_to_points(primes, alpha_2=1.03, spiral=False, amplitudes=0.92):
     n_k = primes[-1]
     if spiral:
-        rot = np.exp(1j * (n_k//2) * 2 * np.pi / n_k)
+        rot = np.exp(1j * (n_k//2) * 2 * np.pi / n_k * amplitudes)
     else:
         rot = 1
     if n_k == 1:
@@ -69,7 +71,7 @@ epsilon = 0.2
 ncol = 10
 nrow = 10
 
-spiral = True
+spiral = False
 fig, ax = plt.subplots(nrow, ncol,
                        figsize=(ncol+1, nrow+1),
                        constrained_layout=True)
@@ -81,26 +83,18 @@ for i in range(nrow):
         print(number)
         ax[i, j].set_title(str(number), fontsize=7, horizontalalignment='center', loc='center')
         ax[i, j].set_aspect('equal', 'box')
-        ax[i, j].set_xlim([-radius * (1+epsilon), radius* (1+epsilon)])
-        ax[i, j].set_ylim([-radius* (1+epsilon), radius* (1+epsilon)])
+        ax[i, j].set_xlim([-radius * (1+epsilon), radius * (1+epsilon)])
+        ax[i, j].set_ylim([-radius * (1+epsilon), radius * (1+epsilon)])
         ax[i, j].set_xticks([])
         ax[i, j].set_yticks([])
         ax[i, j].set_axis_off()
         # print(number)
         primes = primeFactorList(number)
         points = factor_to_points(primes, spiral=spiral)
-        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(3 / number **0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
+        ax[i, j].plot(points.real, points.imag, ".", color='k', ms=int(3 / number**0.5 * (ncol * nrow)**0.5), markeredgewidth=0)
 fig.tight_layout()
 plt.show()
 
-fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + "spiral"+ str(spiral) + ".svg")
-
-# %%
-
-# %%
-
-# %%
-
-# %%
+fig.savefig("images/test_" + str(nrow) + "_" + str(ncol) + "spiral" + str(spiral) + ".svg")
 
 # %%
