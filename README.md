@@ -14,7 +14,6 @@ Some code for te visualization the evolution of a simple dynamic of population w
 A simple visualisation of the Gaussian elimination steps:
 
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot_4figs.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
-
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
 
 
