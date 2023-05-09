@@ -7,6 +7,7 @@ Some elements are provided below. More images and animations can be found in the
 
 ## [Gaussian elimination](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md)
 A simple visualisation of the Gaussian elimination steps:
+
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot_4figs.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
 
 
