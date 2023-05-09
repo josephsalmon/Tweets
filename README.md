@@ -1,7 +1,6 @@
 # Tweets
 
 Maths Tweet with mostly Python and a bit of Inkscape or Geogebra.
-
 Some elements are provided below. More images and animations can be found in the associated directory. 
 
 ## [Dynamic of population](https://github.com/josephsalmon/Tweets/tree/master/MarkovChains/README.md)
