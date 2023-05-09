@@ -59,18 +59,7 @@ Here, we investigate visually random walks connections to the CLT:
 
 ## [Linear Regression](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression)
 
-Here I provide some visualization for linear regression.
+Here I provide a visual proof of the "project full residual on partial residual" property for linear regression.
 
 [<img src="LinearRegression/images/Successive_regression_movie.png?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
 [<img src="LinearRegression/images/Successive_regression_movie.gif?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression/README.md)
-
-
-### Docker
-
-You can run the programs using a Docker container. In this example just replace the paths according to your setup :
-
-```bash
-    sudo docker image build -t math_tweet_with_python .
-    sudo docker container run -it --rm -v FULL_PATH_FOR_THE_OUTPUT:/gifs -v FULL_PATH_FOR_THIS_REPO:/code math_tweet_with_python python3 /code/Berhu_video/Beru_from_mathurin.py
-    sudo docker container run -it --rm -v FULL_PATH_FOR_THE_OUTPUT:/pdf -v FULL_PATH_FOR_THE_OUTPUT:/svg -v FULL_PATH_FOR_THE_OUTPUT:/png -v FULL_PATH_FOR_THIS_REPO:/code math_tweet_with_python python3 /code/IslamicArt/ten_star.py
-```
