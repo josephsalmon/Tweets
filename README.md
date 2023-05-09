@@ -4,11 +4,18 @@ Maths Tweet with mostly Python and a bit of Inkscape or Geogebra.
 
 Some elements are provided below. More images and animations can be found in the associated directory. 
 
+## [Dynamic of population](https://github.com/josephsalmon/Tweets/tree/master/MarkovChains/README.md)
+
+Some code for te visualization the evolution of a simple dynamic of population with three types of sub-populations (blue, orange and green species).
+
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/MarkovChains/dynamic_pop.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/MarkovChains/README.md](https://github.com/josephsalmon/Tweets/tree/master/MarkovChains/README.md))
 
 ## [Gaussian elimination](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md)
 A simple visualisation of the Gaussian elimination steps:
 
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot_4figs.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot_4figs.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
+
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/Pivot_Gauss_video/gauss_pivot.gif" height="200">]([https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md](https://github.com/josephsalmon/Tweets/tree/master/Pivot_Gauss_video/README.md))
 
 
 ## [Hitomezashi](https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md)
