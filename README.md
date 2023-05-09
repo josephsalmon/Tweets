@@ -1,5 +1,4 @@
 # Tweets
-Maths Tweet with Python
 
 Maths Tweet with mostly Python and a bit of Inkscape or Geogebra.
 
