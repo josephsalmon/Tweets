@@ -26,8 +26,6 @@ Hitomezashis are (numerical) decorative reinforcement stitching inspired by Japa
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/Hitomezashi/svg/hitomezashi_mirror_cmap_RdBu_exp_150_nq30.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/Hitomezashi/README.md)
 
 
- 	
-
 ## [Spline-ish](https://github.com/josephsalmon/Tweets/tree/master/Spline-ish/README.md)
 
 In this part, simple iterations creating perspective function are investigated. They are prototype of [Bézier curves](https://en.wikipedia.org/wiki/B%C3%A9zier_curve), simply used for the fun.
@@ -52,12 +50,12 @@ Here, simple traditional geometric constructions from the Islamic world are inve
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/Lotfallah_nb.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/IslamicArt/svg/ten_star_color_e.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/IslamicArt/README.md)
 
-
+<!-- 
 ## [Central Limit Theorem (CLT)](https://github.com/josephsalmon/Tweets/tree/master/CLT)
 
 Here, we investigate visually random walks connections to the CLT:
 
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/CLT/svg/TCL_readme.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/CLT/README.md)
+[<img src="https://raw.github.com/josephsalmon/Tweets/master/CLT/svg/TCL_readme.svg?sanitize=true" height="200">](https://github.com/josephsalmon/Tweets/tree/master/CLT/README.md) -->
 
 ## [Linear Regression](https://github.com/josephsalmon/Tweets/tree/master/LinearRegression)
 
