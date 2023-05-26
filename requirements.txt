@@ -1,5 +1,5 @@
 matplotlib==3.2.1
-mpmath==1.1.0
+mpmath==1.3.0
 numpy==1.18.2
 pycairo==1.19.1
 python-igraph==0.8.0
