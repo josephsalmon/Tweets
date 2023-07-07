@@ -1,0 +1,42 @@
+project:
+    type: website
+    render:
+      - index.qmd
+  
+  website:
+    title: "Public civil servant and inflation in France"
+    site-url: https://josephsalmon.github.io/Tweets/
+    repo-url: https://github.com/josephsalmon/Tweets
+    page-navigation: true
+    repo-actions: [source, issue]
+    sidebar:
+      search: true
+      contents:
+        - text: "Overview"
+          href: index.qmd
+
+
+    # navbar:
+    #   left:
+    #     - href: index.qmd
+    #       text: HAX712X
+  format:
+    html:
+      theme:
+        cosmo
+        # light: spacelab
+      css: custom.scss
+      # mainfont: Atkinson Hyperlegible
+      html-math-method: katex
+      toc-location: right
+      toc: true
+      toc-depth: 3
+      code-fold: false
+      code-tools:
+        toggle: false
+        source: false
+      code-overflow: wrap
+      fig-responsive: true
+      fig.align: center
+      # self-contained: true
+      # fig-format: svg

@@ -13,7 +13,7 @@ df_ipc = pd.read_csv("valeurs_mensuelles.csv", skiprows=6, sep=";")
 # df_point_indice = pd.read_csv("point_indice.csv")
 
 # %%
-df_ipc.columns = ["Date", "IPC", "Useless"]
+df_ipc.columns = ["Date", "IPC", "Useless", "Date2"]
 df_ipc.index = pd.to_datetime(df_ipc["Date"], format="%Y-%m")
 df_ipc.drop(df_ipc.columns[[0, 2]], inplace=True, axis=1)
 
@@ -24,6 +24,8 @@ init_date = "2005-09-01"
 df_ipc["IPC(idx)"] = df_ipc["IPC"] / df_ipc.loc[init_date]["IPC"]
 df_ipc.head()
 
+# sort by "Date" in ascending order
+df_ipc.sort_values(by="Date", inplace=True)
 # %%
 sns.lineplot(x=df_ipc.index, y="IPC(idx)", data=df_ipc)
 ax = plt.gca()
@@ -79,7 +81,7 @@ ax.set_ylim(bottom=0.9)
 fig = ax.get_figure()
 fig.savefig("./svg/ipc_n_point_indice.svg")
 fig.savefig("./png/ipc_n_point_indice.png")
-
+plt.show()
 plt.close("all")
 # %%
 
