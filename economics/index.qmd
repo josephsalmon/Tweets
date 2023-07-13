@@ -21,36 +21,31 @@ fname_inflation = pooch.retrieve("https://www.insee.fr/fr/statistiques/serie/tel
 
 zf = zipfile.ZipFile(fname_inflation) 
 df_ipc = pd.read_csv(zf.open('valeurs_mensuelles.csv'), header=0, sep=";",skiprows=4)
-
-# df_ipc = pd.read_csv("valeurs_mensuelles.csv", skiprows=6, sep=";")
 ```
 
 ```{python}
+#| echo: false
+
 df_ipc.columns = ["Date", "IPC", "Useless", "Date2"]
 df_ipc.index = pd.to_datetime(df_ipc["Date"], format="%Y-%m")
 df_ipc.drop(df_ipc.columns[[0, 2]], inplace=True, axis=1)
-
 df_ipc.head()
 
 # Set origin
 init_date = "2005-09-01"
 df_ipc["IPC(idx)"] = df_ipc["IPC"] / df_ipc.loc[init_date]["IPC"]
 df_ipc.head()
-# sort by "Date" in ascending order
+# Sort by "Date" in ascending order
 df_ipc.sort_values(by="Date", inplace=True)
 ```
 
 
 ```{python}
+#| echo: false
 
 fname_pt_indice = pooch.retrieve("https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb", known_hash=None)
 
 df_pt_idx = pd.read_csv(fname_pt_indice, usecols=["date_effet", "valeur_100_points_euros"])
-
-
-# df_pt_idx = pd.read_csv("point_indice.csv", skiprows=1, sep=",")
-# df_pt_idx.columns = ["Date", "Point d'indice"]
-# df_pt_idx.columns = ["date_effet", "valeur_100_points_euros"]
 
 df_pt_idx = df_pt_idx.rename(columns={"date_effet": "Date", "valeur_100_points_euros": "Point d'indice"})
 
@@ -58,9 +53,6 @@ df_pt_idx["Date"] = pd.to_datetime(df_pt_idx["Date"], format="%Y-%m-%d")
 
 df_pt_idx.sort_values(by="Date", inplace=True)
 
-# df_pt_idx["Point d'indice(idx)"] =df_pt_idx["Point d'indice"]/ df_pt_idx.loc[init_date]["IPC"]
-# df_pt_idx.head()
-# %%
 
 df = pd.merge_asof(df_ipc, df_pt_idx, on="Date")
 df.index = df["Date"]
@@ -74,10 +66,6 @@ df["Point d'indice(idx)"] = (
 df["Point d'indice(euros constant)"] = (
     df["Point d'indice(idx)"] / df["IPC(idx)"]
 )
-
-# df_pt_idx.merge(df_ipc, left_index=True, right_index=True, how='inner')
-# %%
-
 
 df.plot(x="Date", y=["IPC(idx)", "Point d'indice(idx)"])
 ax = plt.gca()
@@ -115,6 +103,3 @@ print(f"Computation was performed at : {current_time} (GMT)")
 Sources are:
 - inflation : [https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement](https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement)
 - point d'indice: [https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb](https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb)
-
-<!-- [<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics)
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/ipc_n_point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics) -->
