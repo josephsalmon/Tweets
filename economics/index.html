@@ -170,85 +170,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading data from 'https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&amp;transposition=donneescolonne&amp;periodeDebut=1&amp;anneeDebut=1990&amp;periodeFin=6&amp;anneeFin=2023&amp;revision=sansrevisions' to file '/home/runner/.cache/pooch/18977fb05ef843a0cc127a230bec921b-001763852'.
-SHA256 hash of downloaded file: 7ee1f9f537fb6b0552add52755772a6f7d92cb1ad17f5a4fdb8c6e28e36140d1
+SHA256 hash of downloaded file: 7487b119638657c2416365c52a306840742d129ada4c94c5d83ed1e81a1d0493
 Use this value as the 'known_hash' argument of 'pooch.retrieve' to ensure that the file hasn't changed if it is downloaded again in the future.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df_ipc.columns <span class="op">=</span> [<span class="st">"Date"</span>, <span class="st">"IPC"</span>, <span class="st">"Useless"</span>, <span class="st">"Date2"</span>]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_ipc.index <span class="op">=</span> pd.to_datetime(df_ipc[<span class="st">"Date"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%Y-%m"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_ipc.drop(df_ipc.columns[[<span class="dv">0</span>, <span class="dv">2</span>]], inplace<span class="op">=</span><span class="va">True</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_ipc.head()</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Set origin</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>init_date <span class="op">=</span> <span class="st">"2005-09-01"</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df_ipc[<span class="st">"IPC(idx)"</span>] <span class="op">=</span> df_ipc[<span class="st">"IPC"</span>] <span class="op">/</span> df_ipc.loc[init_date][<span class="st">"IPC"</span>]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df_ipc.head()</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># sort by "Date" in ascending order</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>df_ipc.sort_values(by<span class="op">=</span><span class="st">"Date"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fname_pt_indice <span class="op">=</span> pooch.retrieve(<span class="st">"https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb"</span>, known_hash<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_pt_idx <span class="op">=</span> pd.read_csv(fname_pt_indice, usecols<span class="op">=</span>[<span class="st">"date_effet"</span>, <span class="st">"valeur_100_points_euros"</span>])</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx = pd.read_csv("point_indice.csv", skiprows=1, sep=",")</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx.columns = ["Date", "Point d'indice"]</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx.columns = ["date_effet", "valeur_100_points_euros"]</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>df_pt_idx <span class="op">=</span> df_pt_idx.rename(columns<span class="op">=</span>{<span class="st">"date_effet"</span>: <span class="st">"Date"</span>, <span class="st">"valeur_100_points_euros"</span>: <span class="st">"Point d'indice"</span>})</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df_pt_idx[<span class="st">"Date"</span>] <span class="op">=</span> pd.to_datetime(df_pt_idx[<span class="st">"Date"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%Y-%m-</span><span class="sc">%d</span><span class="st">"</span>)</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>df_pt_idx.sort_values(by<span class="op">=</span><span class="st">"Date"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx["Point d'indice(idx)"] =df_pt_idx["Point d'indice"]/ df_pt_idx.loc[init_date]["IPC"]</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx.head()</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># %%</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.merge_asof(df_ipc, df_pt_idx, on<span class="op">=</span><span class="st">"Date"</span>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>df.index <span class="op">=</span> df[<span class="st">"Date"</span>]</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df.loc[init_date][<span class="st">"Point d'indice"</span>]</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Point d'indice(idx)"</span>] <span class="op">=</span> (</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Point d'indice"</span>] <span class="op">/</span> df.loc[init_date][<span class="st">"Point d'indice"</span>]</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Point d'indice(euros constant)"</span>] <span class="op">=</span> (</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">"Point d'indice(idx)"</span>] <span class="op">/</span> df[<span class="st">"IPC(idx)"</span>]</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># df_pt_idx.merge(df_ipc, left_index=True, right_index=True, how='inner')</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="co"># %%</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>df.plot(x<span class="op">=</span><span class="st">"Date"</span>, y<span class="op">=</span>[<span class="st">"IPC(idx)"</span>, <span class="st">"Point d'indice(idx)"</span>])</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(left<span class="op">=</span>np.datetime64(init_date))</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(bottom<span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ax.get_figure()</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"./svg/ipc_n_point_indice.svg"</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"./png/ipc_n_point_indice.png"</span>)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>plt.close(<span class="st">"all"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a><span class="co"># %%</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>df.plot(</span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Date"</span>,</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>[<span class="st">"Point d'indice(euros constant)"</span>],</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Point d'indice (€ corrigé de l'inflation):</span><span class="ch">\n</span><span class="st"> Réference 1 le "</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> init_date,</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.gca()</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(left<span class="op">=</span>np.datetime64(init_date))</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(bottom<span class="op">=</span><span class="fl">0.80</span>, top<span class="op">=</span><span class="fl">1.2</span>)</span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>ax.legend().remove()</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> ax.get_figure()</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"./svg/point_indice.svg"</span>)</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>fig.savefig(<span class="st">"./png/point_indice.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Downloading data from 'https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb' to file '/home/runner/.cache/pooch/860fab6bce08b8aa4dbc79f5460c571c-6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb'.
 SHA256 hash of downloaded file: 540ca409eebfe223f6da2b0feb0437fd825379d28ef2684119decf924a257374
@@ -262,16 +188,14 @@ Use this value as the 'known_hash' argument of 'pooch.retrieve' to ensure that t
 </div>
 </div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>current_time <span class="op">=</span> datetime.datetime.now()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Computation was performed at : </span><span class="sc">{</span>current_time<span class="sc">}</span><span class="ss"> (GMT)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> datetime</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>current_time <span class="op">=</span> datetime.datetime.now()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Computation was performed at : </span><span class="sc">{</span>current_time<span class="sc">}</span><span class="ss"> (GMT)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Computation was performed at : 2023-07-13 14:37:05.403645 (GMT)</code></pre>
+<pre><code>Computation was performed at : 2023-07-13 14:47:44.320429 (GMT)</code></pre>
 </div>
 </div>
 <p>Sources are: - inflation : <a href="https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement">https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement</a> - point d’indice: <a href="https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb">https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb</a></p>
-<!-- [<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics)
-[<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/ipc_n_point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics) -->
 
 
 
