@@ -72,11 +72,11 @@ df["Point d'indice(euros constant)"] = (
 
 ```{python}
 #| echo: false
-fig = px.line(df, x="Date", y=["IPC(idx)", "Point d'indice(idx)"], title="Joint evolution of inflation and point d'indice", color_discrete_sequence=px.colors.qualitative.D3)
-fig.update_xaxes(range=[init_date, df['Date'][-1]])
+fig = px.line(df, x="Date", y=["IPC(idx)", "Point d'indice(idx)"], title="Joint evolution of inflation and point d'indice <br> Réference 1 le " + init_date, color_discrete_sequence=px.colors.qualitative.D3, template='none')
+fig.update_xaxes(range=[init_date, df['Date'][-1]], tickangle=-60, nticks=20
+)
 fig.update_yaxes(range=[0.80, 1.5])
-fig.update_layout(legend_title=None)
-
+fig.update_layout(legend_title=None, xaxis_tickformat='%Y')
 
 # matplotlib version
 # df.plot(x="Date", y=["IPC(idx)", "Point d'indice(idx)"])
@@ -90,8 +90,10 @@ fig.update_layout(legend_title=None)
 ```{python}
 #| echo: false
 
-fig = px.line(df, x="Date", y=["Point d'indice(euros constant)"], title="Point d'indice (€ corrigé de l'inflation): <br> Réference 1 le " + init_date,color_discrete_sequence=px.colors.qualitative.D3)
-fig.update_xaxes(range=[init_date, df['Date'][-1]])
+fig = px.line(df, x="Date", y=["Point d'indice(euros constant)"], title="Point d'indice (corrigé de l'inflation): <br> Réference 1 le " + init_date,color_discrete_sequence=px.colors.qualitative.D3, template='none')
+
+fig.update_xaxes(range=[init_date, df['Date'][-1]], tickangle=-60, nticks=20
+)
 fig.update_yaxes(range=[0.80, 1.2])
 fig.update_layout(showlegend=False)
 
