@@ -106,7 +106,11 @@ fig.savefig("./svg/point_indice.svg")
 fig.savefig("./png/point_indice.png")
 ```
 
-
+```{python}
+import datetime
+current_time = datetime.datetime.now()
+print("Computation was performed at : {current_time}(GMT)")
+```
 
 Sources are:
 - inflation : [https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement](https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement)
