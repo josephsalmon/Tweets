@@ -7,6 +7,7 @@ In the file [fonctionnaires_pauvres.py](fonctionnaires_pauvres.py) we investigat
 
 ```{python}
 #| echo: false
+#| warning: false
 import pandas as pd
 import seaborn as sns
 import matplotlib.pylab as plt
@@ -38,11 +39,11 @@ df_ipc.head()
 # Sort by "Date" in ascending order
 df_ipc.sort_values(by="Date", inplace=True)
 ```
-
+#| warning: false
 
 ```{python}
 #| echo: false
-
+#| warning: false
 fname_pt_indice = pooch.retrieve("https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb", known_hash=None)
 
 df_pt_idx = pd.read_csv(fname_pt_indice, usecols=["date_effet", "valeur_100_points_euros"])
