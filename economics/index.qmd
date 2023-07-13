@@ -106,6 +106,7 @@ fig.savefig("./svg/point_indice.svg")
 fig.savefig("./png/point_indice.png")
 ```
 
+
 ```{python}
 import datetime
 current_time = datetime.datetime.now()
