@@ -72,8 +72,11 @@ ax = plt.gca()
 ax.set_xlim(left=np.datetime64(init_date))
 ax.set_ylim(bottom=0.9)
 plt.show()
-# %%
+```
 
+
+```{python}
+#| echo: false
 df.plot(
     x="Date",
     y=["Point d'indice(euros constant)"],
@@ -89,6 +92,7 @@ ax.legend().remove()
 
 
 ```{python}
+#| echo: false
 import datetime
 current_time = datetime.datetime.now()
 print(f"Computation was performed at : {current_time} (GMT)")
