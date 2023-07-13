@@ -11,11 +11,21 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pylab as plt
 import numpy as np
+import pooch
+import zipfile
 
 sns.set_style("whitegrid")
 # Source: # https://www.insee.fr/fr/statistiques/serie/001763852
-df_ipc = pd.read_csv("valeurs_mensuelles.csv", skiprows=6, sep=";")
 
+fname_inflation = pooch.retrieve("https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin=6&anneeFin=2023&revision=sansrevisions", known_hash=None)
+
+zf = zipfile.ZipFile(fname_inflation) 
+df_ipc = pd.read_csv(zf.open('valeurs_mensuelles.csv'), header=0, sep=";",skiprows=4)
+
+# df_ipc = pd.read_csv("valeurs_mensuelles.csv", skiprows=6, sep=";")
+```
+
+```{python}
 df_ipc.columns = ["Date", "IPC", "Useless", "Date2"]
 df_ipc.index = pd.to_datetime(df_ipc["Date"], format="%Y-%m")
 df_ipc.drop(df_ipc.columns[[0, 2]], inplace=True, axis=1)
@@ -26,37 +36,27 @@ df_ipc.head()
 init_date = "2005-09-01"
 df_ipc["IPC(idx)"] = df_ipc["IPC"] / df_ipc.loc[init_date]["IPC"]
 df_ipc.head()
-```
-
-```{python}
 # sort by "Date" in ascending order
 df_ipc.sort_values(by="Date", inplace=True)
-# %%
-sns.lineplot(x=df_ipc.index, y="IPC(idx)", data=df_ipc)
-ax = plt.gca()
-ax.vlines(
-    np.datetime64(init_date),
-    ymin=np.min(df_ipc["IPC(idx)"]),
-    ymax=1.0,
-    color="k",
-    linestyle="--",
-)
-ax.hlines(
-    1.0,
-    xmin=df_ipc["IPC"].idxmin(),
-    xmax=np.datetime64(init_date),
-    color="k",
-    linestyle="--",
-)
+```
 
-ax.set_xlim(df_ipc["IPC"].idxmin(), df_ipc["IPC"].idxmax())
-ax.set_ylim(df_ipc["IPC(idx)"].min(), df_ipc["IPC(idx)"].max())
-# %%
-df_pt_idx = pd.read_csv("point_indice.csv", skiprows=1, sep=",")
-df_pt_idx.columns = ["Date", "Point d'indice"]
-# %%
 
-df_pt_idx["Date"] = pd.to_datetime(df_pt_idx["Date"], format="%d/%m/%Y")
+```{python}
+
+fname_pt_indice = pooch.retrieve("https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb", known_hash=None)
+
+df_pt_idx = pd.read_csv(fname_pt_indice, usecols=["date_effet", "valeur_100_points_euros"])
+
+
+# df_pt_idx = pd.read_csv("point_indice.csv", skiprows=1, sep=",")
+# df_pt_idx.columns = ["Date", "Point d'indice"]
+# df_pt_idx.columns = ["date_effet", "valeur_100_points_euros"]
+
+df_pt_idx = df_pt_idx.rename(columns={"date_effet": "Date", "valeur_100_points_euros": "Point d'indice"})
+
+df_pt_idx["Date"] = pd.to_datetime(df_pt_idx["Date"], format="%Y-%m-%d")
+
+df_pt_idx.sort_values(by="Date", inplace=True)
 
 # df_pt_idx["Point d'indice(idx)"] =df_pt_idx["Point d'indice"]/ df_pt_idx.loc[init_date]["IPC"]
 # df_pt_idx.head()
@@ -114,7 +114,7 @@ print(f"Computation was performed at : {current_time} (GMT)")
 
 Sources are:
 - inflation : [https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement](https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement)
-- point d'indice: [https://fr.wikipedia.org/wiki/Point_d%27indice_salarial_en_France](https://fr.wikipedia.org/wiki/Point_d%27indice_salarial_en_France)
+- point d'indice: [https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb](https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb)
 
 <!-- [<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics)
 [<img src="https://raw.github.com/josephsalmon/Tweets/master/economics/svg/ipc_n_point_indice.svg?sanitize=true" height="300">](https://github.com/josephsalmon/Tweets/tree/master/economics) -->
