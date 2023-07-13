@@ -109,7 +109,7 @@ fig.savefig("./png/point_indice.png")
 ```{python}
 import datetime
 current_time = datetime.datetime.now()
-print("Computation was performed at : {current_time}(GMT)")
+print(f"Computation was performed at : {current_time}(GMT)")
 ```
 
 Sources are:
