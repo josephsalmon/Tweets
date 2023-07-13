@@ -1,9 +1,11 @@
 matplotlib==3.2.1
 mpmath==1.3.0
+datatime==4.3
 numpy==1.18.2
 pycairo==1.19.1
 python-igraph==0.8.0
+pandas==2.0.0
 scikit-image==0.16.2
-seaborn==0.10.0
+seaborn==0.12.2
 shapely==1.7.0
 sklearn==0.0
