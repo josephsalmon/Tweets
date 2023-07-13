@@ -71,11 +71,13 @@ df["Point d'indice(euros constant)"] = (
 
 
 ```{python}
+#| echo: false
 fig = px.line(df, x="Date", y=["IPC(idx)", "Point d'indice(idx)"], title="Joint evolution of inflation and point d'indice")
 fig.update_xaxes(range=[init_date, df['Date'][-1]])
 fig.update_yaxes(range=[0.80, 1.5])
 fig.update_layout(legend_title=None)
 
+# matplotlib version
 # df.plot(x="Date", y=["IPC(idx)", "Point d'indice(idx)"])
 # ax = plt.gca()
 # ax.set_xlim(left=np.datetime64(init_date))
@@ -92,6 +94,7 @@ fig.update_xaxes(range=[init_date, df['Date'][-1]])
 fig.update_yaxes(range=[0.80, 1.2])
 fig.update_layout(showlegend=False)
 
+# matplotlib version
 # df.plot(
 #     x="Date",
 #     y=["Point d'indice(euros constant)"],
@@ -114,5 +117,6 @@ print(f"Computation was performed at : {current_time} (GMT)")
 ```
 
 Sources are:
+
 - inflation : [https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement](https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement)
 - point d'indice: [https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb](https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb)
