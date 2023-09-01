@@ -15,11 +15,17 @@ import pandas as pd
 import numpy as np
 import pooch
 import zipfile
+#| echo: false
+import datetime
+from dateutil.relativedelta import relativedelta
 
-# sns.set_style("whitegrid")
 # Source: # https://www.insee.fr/fr/statistiques/serie/001763852
 
-fname_inflation = pooch.retrieve("https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin=6&anneeFin=2023&revision=sansrevisions", known_hash=None)
+current_time = datetime.datetime.now()
+last_date = current_time - relativedelta(months=2)
+# Create a function that take a datetime and return the year and month it was two month ago:
+
+fname_inflation = pooch.retrieve(f"https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
 
 zf = zipfile.ZipFile(fname_inflation) 
 df_ipc = pd.read_csv(zf.open('valeurs_mensuelles.csv'), header=0, sep=";",skiprows=4)
@@ -76,7 +82,8 @@ fig = px.line(df, x="Date", y=["IPC(idx)", "Point d'indice(idx)"], title="Joint 
 fig.update_xaxes(range=[init_date, df['Date'][-1]], tickangle=-60, nticks=20
 )
 fig.update_yaxes(range=[0.80, 1.5])
-fig.update_layout(legend_title=None, xaxis_tickformat='%Y')
+fig.update_layout(legend_title=None, xaxis_tickformat='%Y', hovermode="x unified")
+fig.update_traces(hovertemplate="%{x|%Y/%m} value: %{y}")
 
 # matplotlib version
 # df.plot(x="Date", y=["IPC(idx)", "Point d'indice(idx)"])
@@ -96,6 +103,12 @@ fig.update_xaxes(range=[init_date, df['Date'][-1]], tickangle=-60, nticks=20
 )
 fig.update_yaxes(range=[0.80, 1.2])
 fig.update_layout(showlegend=False)
+fig.update_traces(hovertemplate='<br>'.join([
+            "Date: %{x}",
+            "value: %{y}",
+        ]),
+)
+
 
 # matplotlib version
 # df.plot(
@@ -113,9 +126,6 @@ fig.update_layout(showlegend=False)
 
 
 ```{python}
-#| echo: false
-import datetime
-current_time = datetime.datetime.now()
 print(f"Computation was performed at : {current_time} (GMT)")
 ```
 
