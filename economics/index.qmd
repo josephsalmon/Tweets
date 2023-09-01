@@ -23,8 +23,6 @@ from dateutil.relativedelta import relativedelta
 
 current_time = datetime.datetime.now()
 last_date = current_time - relativedelta(months=2)
-# Create a function that take a datetime and return the year and month it was two month ago:
-
 fname_inflation = pooch.retrieve(f"https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
 
 zf = zipfile.ZipFile(fname_inflation) 
