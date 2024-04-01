@@ -165,6 +165,7 @@ fig.update_traces(hovertemplate="%{x|%Y/%m} value: %{y}")
 
 
 ```{python}
+#| echo: false
 print(f"Computation was performed at : {current_time} (GMT)")
 ```
 

@@ -23,7 +23,6 @@ format:
     theme:
       cosmo
       # light: spacelab
-    css: custom.scss
     # mainfont: Atkinson Hyperlegible
     html-math-method: katex
     toc-location: right
