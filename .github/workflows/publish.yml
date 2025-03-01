@@ -24,6 +24,7 @@ jobs:
         with:
           python-version: "3.10"
           cache: "pip"
+      - run: sudo apt install libcairo2-dev pkg-config python3-dev
       - run: python3 -m pip install jupyter
       - run: python3 -m pip install -r requirements.txt
 
