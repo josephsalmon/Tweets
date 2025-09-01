@@ -24,7 +24,8 @@ from dateutil.relativedelta import relativedelta
 
 current_time = datetime.datetime.now()
 last_date = current_time - relativedelta(months=2)
-fname_inflation = pooch.retrieve(f"https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
+# fname_inflation = pooch.retrieve(f"https://www.insee.fr/fr/statistiques/serie/telecharger/csv/001763852?ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
+fname_inflation = pooch.retrieve(f"https://bdm.insee.fr/series/001763852/csv?lang=fr&ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
 
 zf = zipfile.ZipFile(fname_inflation)
 # Open a subdirectory where the 'valeurs_mensuelles.csv file is located
