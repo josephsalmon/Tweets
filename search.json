@@ -4,7 +4,7 @@
     "href": "economics/index.html",
     "title": "Public civil servant and inflation rate in France",
     "section": "",
-    "text": "In the file fonctionnaires_pauvres.py we investigated the evolution of the salary of civil servants in France through the “Point d’indice” evolution.\n\n\n\n                                                \n\n\n\n\n\n\n                                                \n\n\n\n\n\nComputation was performed at : 2025-12-01 05:23:17.057733 (GMT)\n\n\nSources are:\n\ninflation : https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement\npoint d’indice: https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb",
+    "text": "In the file fonctionnaires_pauvres.py we investigated the evolution of the salary of civil servants in France through the “Point d’indice” evolution.\n\n\n\n                                                \n\n\n\n\n\n\n                                                \n\n\n\n\n\nComputation was performed at : 2026-01-02 08:54:09.193104 (GMT)\n\n\nSources are:\n\ninflation : https://www.insee.fr/fr/statistiques/serie/001763852#Telechargement\npoint d’indice: https://www.data.gouv.fr/fr/datasets/r/6b5a3e7e-7de7-437c-b8eb-a04ab4138fbb",
     "crumbs": [
       "Overview"
     ]
