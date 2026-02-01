@@ -15,26 +15,35 @@ import pandas as pd
 # import matplotlib.pylab as plt
 import numpy as np
 import pooch
-import zipfile
 #| echo: false
 import datetime
 from dateutil.relativedelta import relativedelta
 
 # Source: # https://www.insee.fr/fr/statistiques/serie/001763852
-
+# https://portail-api.insee.fr/
 current_time = datetime.datetime.now()
 last_date = current_time - relativedelta(months=2)
-fname_inflation = pooch.retrieve(f"https://bdm.insee.fr/series/001763852/csv?lang=fr&ordre=antechronologique&transposition=donneescolonne&periodeDebut=1&anneeDebut=1990&periodeFin={last_date.month}&anneeFin={last_date.year}&revision=sansrevisions", known_hash=None)
 
-zf = zipfile.ZipFile(fname_inflation)
-# Open a subdirectory where the 'valeurs_mensuelles.csv file is located
+start_period = "1990-01"
+end_period = last_date.strftime("%Y-%m")
 
+url = f"https://api.insee.fr/series/BDM/V1/data/SERIES_BDM/001763852?startPeriod={start_period}&endPeriod={end_period}"
 
-for file in zf.namelist():
-    if 'valeurs_mensuelles.csv' in file:
-        with zf.open(file, 'r') as f:
-            df_ipc = pd.read_csv(f, header=0, sep=";",skiprows=4)
-        break
+fname_inflation = pooch.retrieve(url, known_hash=None, downloader=pooch.HTTPDownloader(headers={"Accept": "application/json"}))
+
+# The API currently returns SDMX-ML (XML) despite the Accept header.
+# We use read_xml to parse the observations directly.
+df_ipc = pd.read_xml(
+    fname_inflation,
+    xpath="//Obs",
+    namespaces={
+        "message": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message",
+        "common": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common"
+    }
+)
+
+if 'TIME_PERIOD' in df_ipc.columns:
+    df_ipc = df_ipc.rename(columns={'TIME_PERIOD': 'Date', 'OBS_VALUE': 'IPC'})
 
 ```
 
@@ -42,9 +51,9 @@ for file in zf.namelist():
 #| echo: false
 #| layout-ncol: 1
 
-df_ipc.columns = ["Date", "IPC", "Useless", "Date2"]
+df_ipc["IPC"] = pd.to_numeric(df_ipc["IPC"])
 df_ipc.index = pd.to_datetime(df_ipc["Date"], format="%Y-%m")
-df_ipc.drop(df_ipc.columns[[0, 2]], inplace=True, axis=1)
+df_ipc = df_ipc[["IPC"]]
 df_ipc.head()
 
 # Set origin
