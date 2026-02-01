@@ -9,6 +9,7 @@ pandas==2.0.0
 pooch==v1.7.0
 lxml==5.3.1
 nbformat>=4.2.0
+PyYAML==6.0.3
 # seaborn==0.12.2
 # shapely==1.7.0
 # sklearn==1.2.2
