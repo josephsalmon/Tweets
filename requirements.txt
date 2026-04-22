@@ -7,7 +7,7 @@ pycairo==1.19.1
 pandas==2.0.0
 # scikit-image==0.16.2
 pooch==v1.7.0
-lxml==5.3.1
+lxml==6.1.0
 nbformat>=4.2.0
 PyYAML==6.0.3
 nbclient==0.10.2
